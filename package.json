@@ -12,7 +12,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prebuild:fetch-theme-color": "node fetch-theme-color.cjs",
+    "prebuild:fetch-theme-color": "node script/fetch-theme-color.cjs",
     "bookshop": "npx @bookshop/generate --bookshop src/components",
     "bootstrap": "npm install && npm run astro sync",
     "format": "prettier -w .",
