@@ -46,6 +46,7 @@ const canonicalURL = new URL(seo?.canonical_url ?? Astro.url.pathname, baseUrl);
     <link rel="icon" type="image/png" href="/touch-icon.png" sizes="192x192" />
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <SEO
       noindex={seo?.no_index || false}
