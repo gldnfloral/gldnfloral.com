@@ -119,6 +119,7 @@ export default function Navigation({ pageUrl }) {
                     {item.enable_dropdown && item.dropdown ? (
                       <>
                         <a
+                          rel="prefetch"
                           href={`${item.link}`}
                           className={`nav-link dropdown-link ${pageUrl?.pathname === item.link ? 'active' : ''}`}
                           onClick={handleDropdownClick}
@@ -128,7 +129,7 @@ export default function Navigation({ pageUrl }) {
                         <ul className="dropdown-menu">
                           {item.dropdown.map((dropdown_item, j) => (
                             <li key={j}>
-                              <a className="dropdown-item" href={dropdown_item.dropdown_link}>
+                              <a rel="prefetch" className="dropdown-item" href={dropdown_item.dropdown_link}>
                                 {dropdown_item.dropdown_text}
                               </a>
                             </li>
@@ -137,6 +138,7 @@ export default function Navigation({ pageUrl }) {
                       </>
                     ) : (
                       <a
+                        rel="prefetch"
                         href={`${item.link}`}
                         className={`nav-link ${pageUrl?.pathname === item.link ? 'active' : ''}`}
                       >
@@ -151,7 +153,7 @@ export default function Navigation({ pageUrl }) {
               <>
                 <div className="d-none d-lg-block">
                   <div className="nav-item">
-                    <a href={`${navigation.nav_btn?.link}`} className="btn btn-sm btn-links">
+                    <a rel="prefetch" href={`${navigation.nav_btn?.link}`} className="btn btn-sm btn-links">
                       {navigation.nav_btn?.text}
                     </a>
                   </div>

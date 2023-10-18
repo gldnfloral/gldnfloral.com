@@ -20,6 +20,7 @@
     "all": "npm run format && npm run astro sync && npm run build"
   },
   "dependencies": {
+    "@astrojs/prefetch": "^0.4.1",
     "@astrojs/react": "^3.0.3",
     "@astrojs/sitemap": "^3.0.2",
     "@bookshop/astro-bookshop": "3.8.1",

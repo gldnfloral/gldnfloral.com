@@ -18,6 +18,7 @@ export default function BlogPagination({ pagination }) {
     pageLinks.push(
       <li className="page-item" key={i}>
         <a
+          rel="prefetch"
           className={`page-link btn btn-secondary ${i === currentPage ? 'active' : ''}`}
           href={i === 1 ? '/blog' : `/blog/${i}`}
         >

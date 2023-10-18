@@ -29,7 +29,7 @@ export default function AboutHero(block) {
               />
               <div className="scroll-down d-flex justify-content-center justify-content-xl-start">
                 {block.button && (
-                  <a href={block.button.link} className="btn btn-primary btn-lg">
+                  <a rel="prefetch" href={block.button.link} className="btn btn-primary btn-lg">
                     {' '}
                     {block.button.text}{' '}
                   </a>

@@ -18,7 +18,7 @@ export default function HomeHero(block) {
               />
               <div className="">
                 {block.button && (
-                  <a href={block.button.link} className="btn btn-primary btn-lg">
+                  <a rel="prefetch" href={block.button.link} className="btn btn-primary btn-lg">
                     {' '}
                     {block.button.text}{' '}
                   </a>
