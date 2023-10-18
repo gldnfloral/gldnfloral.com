@@ -25,7 +25,7 @@ export default function BlogPagination({ pagination }) {
         >
           {i}
         </a>
-      </li>
+      </li>,
     );
   }
 

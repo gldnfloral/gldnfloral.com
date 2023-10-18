@@ -62,7 +62,9 @@
       border: 1px solid rgba(255, 255, 255, 0.4);
       appearance: none;
       border-radius: 10px;
-      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
 
       &:focus {
         color: $color-white;
@@ -150,7 +152,8 @@
       justify-content: flex-start;
     }
 
-    @include media-breakpoint-down-sm {}
+    @include media-breakpoint-down-sm {
+    }
 
     &-item {
       label {
@@ -168,7 +171,7 @@
     }
   }
 
-  .btn-check:checked[type='radio']+label {
+  .btn-check:checked[type="radio"] + label {
     background: $color-white;
     color: $color-primary !important;
   }

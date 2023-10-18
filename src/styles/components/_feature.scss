@@ -588,7 +588,8 @@
         }
 
         @include media-breakpoint-down-xl {
-          padding: $base-padding * 3 $base-padding * 1 $base-padding * 2 $base-padding * 2;
+          padding: $base-padding * 3 $base-padding * 1 $base-padding * 2
+            $base-padding * 2;
         }
 
         h2 {

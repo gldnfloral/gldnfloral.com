@@ -3,176 +3,188 @@
 **********/
 @use "sass:math";
 
-
 /* sora-regular - latin */
 @font-face {
-  font-family: 'Sora';
+  font-family: "Sora";
   font-display: fallback;
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/sora-v10-latin-regular.eot');
+  src: url("/fonts/sora-v10-latin-regular.eot");
   /* IE9 Compat Modes */
-  src: local(''), url('/fonts/sora-v10-latin-regular.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('/fonts/sora-v10-latin-regular.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('/fonts/sora-v10-latin-regular.woff') format('woff'),
-    /* Modern Browsers */
-    url('/fonts/sora-v10-latin-regular.ttf') format('truetype'),
-    /* Safari, Android, iOS */
-    url('/fonts/sora-v10-latin-regular.svg#Sora') format('svg');
+  src:
+    local(""),
+    url("/fonts/sora-v10-latin-regular.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/sora-v10-latin-regular.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/sora-v10-latin-regular.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/fonts/sora-v10-latin-regular.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */ url("/fonts/sora-v10-latin-regular.svg#Sora")
+      format("svg");
   /* Legacy iOS */
 }
 
 /* sora-500 - latin */
 @font-face {
-  font-family: 'Sora';
+  font-family: "Sora";
   font-display: fallback;
   font-style: normal;
   font-weight: 500;
-  src: url('/fonts/sora-v10-latin-500.eot');
+  src: url("/fonts/sora-v10-latin-500.eot");
   /* IE9 Compat Modes */
-  src: local(''), url('/fonts/sora-v10-latin-500.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('/fonts/sora-v10-latin-500.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('/fonts/sora-v10-latin-500.woff') format('woff'),
-    /* Modern Browsers */
-    url('/fonts/sora-v10-latin-500.ttf') format('truetype'),
-    /* Safari, Android, iOS */
-    url('/fonts/sora-v10-latin-500.svg#Sora') format('svg');
+  src:
+    local(""),
+    url("/fonts/sora-v10-latin-500.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/sora-v10-latin-500.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/sora-v10-latin-500.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/fonts/sora-v10-latin-500.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */ url("/fonts/sora-v10-latin-500.svg#Sora")
+      format("svg");
   /* Legacy iOS */
 }
 
 /* sora-600 - latin */
 @font-face {
-  font-family: 'Sora';
+  font-family: "Sora";
   font-display: fallback;
   font-style: normal;
   font-weight: 600;
-  src: url('/fonts/sora-v10-latin-600.eot');
+  src: url("/fonts/sora-v10-latin-600.eot");
   /* IE9 Compat Modes */
-  src: local(''), url('/fonts/sora-v10-latin-600.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('/fonts/sora-v10-latin-600.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('/fonts/sora-v10-latin-600.woff') format('woff'),
-    /* Modern Browsers */
-    url('/fonts/sora-v10-latin-600.ttf') format('truetype'),
-    /* Safari, Android, iOS */
-    url('/fonts/sora-v10-latin-600.svg#Sora') format('svg');
+  src:
+    local(""),
+    url("/fonts/sora-v10-latin-600.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/sora-v10-latin-600.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/sora-v10-latin-600.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/fonts/sora-v10-latin-600.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */ url("/fonts/sora-v10-latin-600.svg#Sora")
+      format("svg");
   /* Legacy iOS */
 }
 
 /* sora-700 - latin */
 @font-face {
-  font-family: 'Sora';
+  font-family: "Sora";
   font-display: fallback;
   font-style: normal;
   font-weight: 700;
-  src: url('/fonts/sora-v10-latin-700.eot');
+  src: url("/fonts/sora-v10-latin-700.eot");
   /* IE9 Compat Modes */
-  src: local(''), url('/fonts/sora-v10-latin-700.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('/fonts/sora-v10-latin-700.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('/fonts/sora-v10-latin-700.woff') format('woff'),
-    /* Modern Browsers */
-    url('/fonts/sora-v10-latin-700.ttf') format('truetype'),
-    /* Safari, Android, iOS */
-    url('/fonts/sora-v10-latin-700.svg#Sora') format('svg');
+  src:
+    local(""),
+    url("/fonts/sora-v10-latin-700.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/sora-v10-latin-700.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/sora-v10-latin-700.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/fonts/sora-v10-latin-700.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */ url("/fonts/sora-v10-latin-700.svg#Sora")
+      format("svg");
   /* Legacy iOS */
 }
 
 /* space-grotesk-regular - latin */
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: "Space Grotesk";
   font-display: fallback;
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/space-grotesk-v12-latin-regular.eot');
+  src: url("/fonts/space-grotesk-v12-latin-regular.eot");
   /* IE9 Compat Modes */
-  src: local(''),
-    url('/fonts/space-grotesk-v12-latin-regular.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('/fonts/space-grotesk-v12-latin-regular.woff2') format('woff2'),
+  src:
+    local(""),
+    url("/fonts/space-grotesk-v12-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/space-grotesk-v12-latin-regular.woff2")
+      format("woff2"),
     /* Super Modern Browsers */
-    url('/fonts/space-grotesk-v12-latin-regular.woff') format('woff'),
-    /* Modern Browsers */
-    url('/fonts/space-grotesk-v12-latin-regular.ttf') format('truetype'),
+      url("/fonts/space-grotesk-v12-latin-regular.woff") format("woff"),
+    /* Modern Browsers */ url("/fonts/space-grotesk-v12-latin-regular.ttf")
+      format("truetype"),
     /* Safari, Android, iOS */
-    url('/fonts/space-grotesk-v12-latin-regular.svg#SpaceGrotesk') format('svg');
+      url("/fonts/space-grotesk-v12-latin-regular.svg#SpaceGrotesk")
+      format("svg");
   /* Legacy iOS */
 }
 
 /* space-grotesk-500 - latin */
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: "Space Grotesk";
   font-display: fallback;
   font-style: normal;
   font-weight: 500;
-  src: url('/fonts/space-grotesk-v12-latin-500.eot');
+  src: url("/fonts/space-grotesk-v12-latin-500.eot");
   /* IE9 Compat Modes */
-  src: local(''),
-    url('/fonts/space-grotesk-v12-latin-500.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('/fonts/space-grotesk-v12-latin-500.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('/fonts/space-grotesk-v12-latin-500.woff') format('woff'),
-    /* Modern Browsers */
-    url('/fonts/space-grotesk-v12-latin-500.ttf') format('truetype'),
+  src:
+    local(""),
+    url("/fonts/space-grotesk-v12-latin-500.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/space-grotesk-v12-latin-500.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/space-grotesk-v12-latin-500.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/fonts/space-grotesk-v12-latin-500.ttf")
+      format("truetype"),
     /* Safari, Android, iOS */
-    url('/fonts/space-grotesk-v12-latin-500.svg#SpaceGrotesk') format('svg');
+      url("/fonts/space-grotesk-v12-latin-500.svg#SpaceGrotesk") format("svg");
   /* Legacy iOS */
 }
 
 /* space-grotesk-600 - latin */
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: "Space Grotesk";
   font-display: fallback;
   font-style: normal;
   font-weight: 600;
-  src: url('/fonts/space-grotesk-v12-latin-600.eot');
+  src: url("/fonts/space-grotesk-v12-latin-600.eot");
   /* IE9 Compat Modes */
-  src: local(''),
-    url('/fonts/space-grotesk-v12-latin-600.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('/fonts/space-grotesk-v12-latin-600.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('/fonts/space-grotesk-v12-latin-600.woff') format('woff'),
-    /* Modern Browsers */
-    url('/fonts/space-grotesk-v12-latin-600.ttf') format('truetype'),
+  src:
+    local(""),
+    url("/fonts/space-grotesk-v12-latin-600.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/space-grotesk-v12-latin-600.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/space-grotesk-v12-latin-600.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/fonts/space-grotesk-v12-latin-600.ttf")
+      format("truetype"),
     /* Safari, Android, iOS */
-    url('/fonts/space-grotesk-v12-latin-600.svg#SpaceGrotesk') format('svg');
+      url("/fonts/space-grotesk-v12-latin-600.svg#SpaceGrotesk") format("svg");
   /* Legacy iOS */
 }
 
 /* space-grotesk-700 - latin */
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: "Space Grotesk";
   font-display: fallback;
   font-style: normal;
   font-weight: 700;
-  src: url('/fonts/space-grotesk-v12-latin-700.eot');
+  src: url("/fonts/space-grotesk-v12-latin-700.eot");
   /* IE9 Compat Modes */
-  src: local(''),
-    url('/fonts/space-grotesk-v12-latin-700.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('/fonts/space-grotesk-v12-latin-700.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('/fonts/space-grotesk-v12-latin-700.woff') format('woff'),
-    /* Modern Browsers */
-    url('/fonts/space-grotesk-v12-latin-700.ttf') format('truetype'),
+  src:
+    local(""),
+    url("/fonts/space-grotesk-v12-latin-700.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("/fonts/space-grotesk-v12-latin-700.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/space-grotesk-v12-latin-700.woff")
+      format("woff"),
+    /* Modern Browsers */ url("/fonts/space-grotesk-v12-latin-700.ttf")
+      format("truetype"),
     /* Safari, Android, iOS */
-    url('/fonts/space-grotesk-v12-latin-700.svg#SpaceGrotesk') format('svg');
+      url("/fonts/space-grotesk-v12-latin-700.svg#SpaceGrotesk") format("svg");
   /* Legacy iOS */
 }
 
-
 @font-face {
-  font-family: 'FontAwesome';
-  src: url('/fonts/fontawesome-webfont.woff') format('woff'),
-       url('/fonts/fontawesome-webfont.ttf') format('truetype');
+  font-family: "FontAwesome";
+  src:
+    url("/fonts/fontawesome-webfont.woff") format("woff"),
+    url("/fonts/fontawesome-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -445,8 +457,11 @@ a {
   font-weight: 600;
   border-radius: 0;
   overflow-anchor: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out,
     border-radius 0.15s ease;
 
   @include media-breakpoint-down-lg {
@@ -524,11 +539,13 @@ a {
     line-height: 33px;
 
     @include media-breakpoint-down-xl {
-      margin: $base-margin * 0 $base-margin * 5 $base-margin * 0 $base-margin * 0;
+      margin: $base-margin * 0 $base-margin * 5 $base-margin * 0 $base-margin *
+        0;
     }
 
     @include media-breakpoint-down-lg {
-      margin: $base-margin * 0 $base-margin * 1 $base-margin * 0 $base-margin * 0;
+      margin: $base-margin * 0 $base-margin * 1 $base-margin * 0 $base-margin *
+        0;
       font-size: $base-font-size * 1.25;
     }
 
@@ -589,7 +606,8 @@ a {
 }
 
 .accordion-body {
-  padding: $base-padding * 1.6 $base-padding * 10 $base-padding * 0 $base-padding * 0;
+  padding: $base-padding * 1.6 $base-padding * 10 $base-padding * 0
+    $base-padding * 0;
   font-size: 20px;
   color: $color-text-light;
   letter-spacing: -0.4px;
@@ -597,7 +615,8 @@ a {
   font-family: $font-secondary;
 
   @include media-breakpoint-down-xl {
-    padding: $base-padding * 1.6 $base-padding * 0 $base-padding * 0 $base-padding * 0;
+    padding: $base-padding * 1.6 $base-padding * 0 $base-padding * 0
+      $base-padding * 0;
   }
 }
 

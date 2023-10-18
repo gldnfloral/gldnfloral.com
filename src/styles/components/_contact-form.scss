@@ -176,8 +176,8 @@
   }
 }
 
-.contact-hero+.contact {
-  .contact-form>form {
+.contact-hero + .contact {
+  .contact-form > form {
     margin-top: -$base-margin * 28.2;
 
     @include media-breakpoint-down-xl {

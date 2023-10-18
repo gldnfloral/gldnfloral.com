@@ -6,13 +6,13 @@ const md = new MarkdownIt({ html: true });
 export default function PrivacyPrivacy(block) {
   const sectionRefs = [];
   block.terms_and_conditions.map((privacy, i) =>
-    sectionRefs.push(useRef(null))
+    sectionRefs.push(useRef(null)),
   );
   const handleClick = (event) => {
     Array.from(document.querySelectorAll(".privacy-nav .nav-link")).forEach(
       (element) => {
         element.classList.remove("active");
-      }
+      },
     );
     event.currentTarget.classList.add("active");
   };
