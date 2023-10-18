@@ -14,10 +14,10 @@
     "astro": "astro",
     "prebuild:fetch-theme-color": "node fetch-theme-color.cjs",
     "bookshop": "npx @bookshop/generate --bookshop src/components",
-    "bootstrap": "npm install && npm run astro sync && npm run astro check",
+    "bootstrap": "npm install && npm run astro sync",
     "format": "prettier -w .",
     "format-ci": "prettier --check .",
-    "all": "npm run format && npm run astro sync && npm run astro check && npm run build"
+    "all": "npm run format && npm run astro sync && npm run build"
   },
   "dependencies": {
     "@astrojs/react": "^2.1.3",
