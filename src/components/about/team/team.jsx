@@ -14,11 +14,7 @@ export default function AboutTeam(block) {
             <div className="col-lg-3 col-md-6" key={i}>
               <div className="team-member">
                 <div className="team-member-thumb rounded-box">
-                  <img
-                    src={member.image}
-                    alt={member.image_alt}
-                    loading="lazy"
-                  />
+                  <img src={member.image} alt={member.image_alt} loading="lazy" />
                 </div>
                 <div className="team-member-details">
                   <h3>{member.name}</h3>

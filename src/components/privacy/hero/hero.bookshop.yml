@@ -4,8 +4,8 @@ spec:
     - content_blocks
   label: Hero
   description: Hero section
-  icon: "lock"
-  tags: ["hero"]
+  icon: 'lock'
+  tags: ['hero']
 
 # Defines the structure of this component, as well as the default values
 blueprint:

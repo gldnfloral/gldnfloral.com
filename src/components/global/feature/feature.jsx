@@ -1,8 +1,8 @@
-import MarkdownIt from "markdown-it";
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function GlobalFeature(block) {
-  let content = "";
+  let content = '';
   if (block.reversed) {
     content = (
       <>

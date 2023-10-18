@@ -79,11 +79,9 @@
     }
   }
   .same-card {
-    padding: $base-padding * 3.8 $base-padding * 5 $base-padding * 3
-      $base-padding * 5;
+    padding: $base-padding * 3.8 $base-padding * 5 $base-padding * 3 $base-padding * 5;
     @include media-breakpoint-down-xxl {
-      padding: $base-padding * 3.8 $base-padding * 3 $base-padding * 3
-        $base-padding * 3;
+      padding: $base-padding * 3.8 $base-padding * 3 $base-padding * 3 $base-padding * 3;
     }
     @include media-breakpoint-down-xl {
       padding: $base-padding * 2;
@@ -156,7 +154,7 @@
           padding-bottom: $base-padding * 5;
           position: relative;
           &::before {
-            content: "";
+            content: '';
             position: absolute;
             background: $color-primary-light;
             width: 2px;
@@ -185,7 +183,7 @@
             padding: 0;
             &::after {
               position: absolute;
-              content: "";
+              content: '';
               background: $color-text-light;
               width: 10px;
               height: 10px;
@@ -196,7 +194,7 @@
             }
             &::before {
               position: absolute;
-              content: "";
+              content: '';
               background: $color-primary-light;
               width: 15px;
               height: 15px;

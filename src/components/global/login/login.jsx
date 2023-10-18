@@ -11,31 +11,17 @@ export default function GlobalLogin(block) {
                   <label for="fullName" className="form-label">
                     {block.fullname.heading}
                   </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="fullName"
-                    placeholder={block.fullname.placeholder}
-                  />
+                  <input type="text" className="form-control" id="fullName" placeholder={block.fullname.placeholder} />
                 </div>
                 <div className="col-md-12">
                   <label for="pEmailId" className="form-label">
                     {block.email.heading}
                   </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="pEmailId"
-                    placeholder={block.email.placeholder}
-                  />
+                  <input type="email" className="form-control" id="pEmailId" placeholder={block.email.placeholder} />
                 </div>
                 <div className="col-6">
                   <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="gridCheck"
-                    />
+                    <input className="form-check-input" type="checkbox" id="gridCheck" />
                     <label className="form-check-label" for="gridCheck">
                       {block.checkbox_text}
                     </label>
@@ -45,7 +31,7 @@ export default function GlobalLogin(block) {
                   <div className="form-check ps-0  text-end">
                     <label className="form-check-label" for="gridCheck">
                       <a href="#" className="forget-password">
-                        {" "}
+                        {' '}
                         Forget Password
                       </a>
                     </label>
@@ -62,17 +48,8 @@ export default function GlobalLogin(block) {
                   </label>
                 </div>
                 <div className="button-group">
-                  <button
-                    type="submit"
-                    className="btn btn-submit btn-social w-100"
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                  <button type="submit" className="btn btn-submit btn-social w-100">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M15.9649 17.0524C14.3566 18.4107 12.2703 19.2728 9.99918 19.2728C6.61971 19.2728 3.65312 17.411 2.04492 14.6944L2.647 11.919L5.31573 11.4236C5.93512 13.423 7.80412 14.89 9.99918 14.89C11.0641 14.89 12.0529 14.5531 12.8679 13.9555L15.4324 14.3467L15.9649 17.0524Z"
                         fill="white"
@@ -104,17 +81,8 @@ export default function GlobalLogin(block) {
                     </svg>
                     Sign In with Google
                   </button>
-                  <button
-                    type="submit"
-                    className="btn btn-submit btn-social w-100"
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                  <button type="submit" className="btn btn-submit btn-social w-100">
+                    <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         fill-rule="evenodd"
                         clip-rule="evenodd"
@@ -127,10 +95,7 @@ export default function GlobalLogin(block) {
                 </div>
                 <div className="divider mt-9"></div>
                 <div className="col-md-12">
-                  <a
-                    href={block.sign_up_button.link}
-                    className="create-account"
-                  >
+                  <a href={block.sign_up_button.link} className="create-account">
                     {block.sign_up_button.text}
                   </a>
                 </div>

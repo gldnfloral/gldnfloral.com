@@ -1,4 +1,4 @@
-import MarkdownIt from "markdown-it";
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function HomeHero(block) {
@@ -18,12 +18,9 @@ export default function HomeHero(block) {
               />
               <div className="">
                 {block.button && (
-                  <a
-                    href={block.button.link}
-                    className="btn btn-primary btn-lg"
-                  >
-                    {" "}
-                    {block.button.text}{" "}
+                  <a href={block.button.link} className="btn btn-primary btn-lg">
+                    {' '}
+                    {block.button.text}{' '}
                   </a>
                 )}
               </div>

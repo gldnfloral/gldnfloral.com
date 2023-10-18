@@ -1,8 +1,8 @@
-import rss from "@astrojs/rss";
-import site from "@data/site.json";
-import { getCollection } from "astro:content";
+import rss from '@astrojs/rss';
+import site from '@data/site.json';
+import { getCollection } from 'astro:content';
 
-const posts = await getCollection("blog");
+const posts = await getCollection('blog');
 
 export const get = () =>
   rss({

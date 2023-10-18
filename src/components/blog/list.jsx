@@ -1,5 +1,5 @@
-import PostSummary from "../../components/posts/summary";
-import MarkdownIt from "markdown-it";
+import PostSummary from '../../components/posts/summary';
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function BlogList({ page, posts }) {

@@ -2,12 +2,12 @@
  * http://dimsemenov.com/plugins/magnific-popup/
  * Copyright (c) 2016 Dmitry Semenov; */
 (function (factory) {
-  if (typeof define === "function" && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(["jquery"], factory);
-  } else if (typeof exports === "object") {
+    define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
     // Node/CommonJS
-    factory(require("jquery"));
+    factory(require('jquery'));
   } else {
     // Browser globals
     factory(window.jQuery || window.Zepto);
@@ -23,18 +23,18 @@
   /**
    * Private static constants
    */
-  var CLOSE_EVENT = "Close",
-    BEFORE_CLOSE_EVENT = "BeforeClose",
-    AFTER_CLOSE_EVENT = "AfterClose",
-    BEFORE_APPEND_EVENT = "BeforeAppend",
-    MARKUP_PARSE_EVENT = "MarkupParse",
-    OPEN_EVENT = "Open",
-    CHANGE_EVENT = "Change",
-    NS = "mfp",
-    EVENT_NS = "." + NS,
-    READY_CLASS = "mfp-ready",
-    REMOVING_CLASS = "mfp-removing",
-    PREVENT_CLOSE_CLASS = "mfp-prevent-close";
+  var CLOSE_EVENT = 'Close',
+    BEFORE_CLOSE_EVENT = 'BeforeClose',
+    AFTER_CLOSE_EVENT = 'AfterClose',
+    BEFORE_APPEND_EVENT = 'BeforeAppend',
+    MARKUP_PARSE_EVENT = 'MarkupParse',
+    OPEN_EVENT = 'Open',
+    CHANGE_EVENT = 'Change',
+    NS = 'mfp',
+    EVENT_NS = '.' + NS,
+    READY_CLASS = 'mfp-ready',
+    REMOVING_CLASS = 'mfp-removing',
+    PREVENT_CLOSE_CLASS = 'mfp-prevent-close';
 
   /**
    * Private vars
@@ -57,8 +57,8 @@
       mfp.ev.on(NS + name + EVENT_NS, f);
     },
     _getEl = function (className, appendTo, html, raw) {
-      var el = document.createElement("div");
-      el.className = "mfp-" + className;
+      var el = document.createElement('div');
+      el.className = 'mfp-' + className;
       if (html) {
         el.innerHTML = html;
       }
@@ -85,9 +85,7 @@
     },
     _getCloseBtn = function (type) {
       if (type !== _currPopupType || !mfp.currTemplate.closeBtn) {
-        mfp.currTemplate.closeBtn = $(
-          mfp.st.closeMarkup.replace("%title%", mfp.st.tClose),
-        );
+        mfp.currTemplate.closeBtn = $(mfp.st.closeMarkup.replace('%title%', mfp.st.tClose));
         _currPopupType = type;
       }
       return mfp.currTemplate.closeBtn;
@@ -103,15 +101,15 @@
     },
     // CSS transition detection, http://stackoverflow.com/questions/7264899/detect-css-transitions-using-javascript-and-without-modernizr
     supportsTransitions = function () {
-      var s = document.createElement("p").style, // 's' for style. better to create an element if body yet to exist
-        v = ["ms", "O", "Moz", "Webkit"]; // 'v' for vendor
+      var s = document.createElement('p').style, // 's' for style. better to create an element if body yet to exist
+        v = ['ms', 'O', 'Moz', 'Webkit']; // 'v' for vendor
 
-      if (s["transition"] !== undefined) {
+      if (s['transition'] !== undefined) {
         return true;
       }
 
       while (v.length) {
-        if (v.pop() + "Transition" in s) {
+        if (v.pop() + 'Transition' in s) {
           return true;
         }
       }
@@ -141,9 +139,7 @@
       mfp.probablyMobile =
         mfp.isAndroid ||
         mfp.isIOS ||
-        /(Opera Mini)|Kindle|webOS|BlackBerry|(Opera Mobi)|(Windows Phone)|IEMobile/i.test(
-          navigator.userAgent,
-        );
+        /(Opera Mini)|Kindle|webOS|BlackBerry|(Opera Mobi)|(Windows Phone)|IEMobile/i.test(navigator.userAgent);
       _document = $(document);
 
       mfp.popupsCache = {};
@@ -185,7 +181,7 @@
       }
 
       mfp.types = [];
-      _wrapClasses = "";
+      _wrapClasses = '';
       if (data.mainEl && data.mainEl.length) {
         mfp.ev = data.mainEl.eq(0);
       } else {
@@ -202,10 +198,7 @@
       }
 
       mfp.st = $.extend(true, {}, $.magnificPopup.defaults, data);
-      mfp.fixedContentPos =
-        mfp.st.fixedContentPos === "auto"
-          ? !mfp.probablyMobile
-          : mfp.st.fixedContentPos;
+      mfp.fixedContentPos = mfp.st.fixedContentPos === 'auto' ? !mfp.probablyMobile : mfp.st.fixedContentPos;
 
       if (mfp.st.modal) {
         mfp.st.closeOnContentClick = false;
@@ -218,24 +211,24 @@
       // main containers are created only once
       if (!mfp.bgOverlay) {
         // Dark overlay
-        mfp.bgOverlay = _getEl("bg").on("click" + EVENT_NS, function () {
+        mfp.bgOverlay = _getEl('bg').on('click' + EVENT_NS, function () {
           mfp.close();
         });
 
-        mfp.wrap = _getEl("wrap")
-          .attr("tabindex", -1)
-          .on("click" + EVENT_NS, function (e) {
+        mfp.wrap = _getEl('wrap')
+          .attr('tabindex', -1)
+          .on('click' + EVENT_NS, function (e) {
             if (mfp._checkIfClose(e.target)) {
               mfp.close();
             }
           });
 
-        mfp.container = _getEl("container", mfp.wrap);
+        mfp.container = _getEl('container', mfp.wrap);
       }
 
-      mfp.contentContainer = _getEl("content");
+      mfp.contentContainer = _getEl('content');
       if (mfp.st.preloader) {
-        mfp.preloader = _getEl("preloader", mfp.container, mfp.st.tLoading);
+        mfp.preloader = _getEl('preloader', mfp.container, mfp.st.tLoading);
       }
 
       // Initializing modules
@@ -243,9 +236,9 @@
       for (i = 0; i < modules.length; i++) {
         var n = modules[i];
         n = n.charAt(0).toUpperCase() + n.slice(1);
-        mfp["init" + n].call(mfp);
+        mfp['init' + n].call(mfp);
       }
-      _mfpTrigger("BeforeOpen");
+      _mfpTrigger('BeforeOpen');
 
       if (mfp.st.showCloseBtn) {
         // Close button
@@ -255,51 +248,48 @@
           _mfpOn(MARKUP_PARSE_EVENT, function (e, template, values, item) {
             values.close_replaceWith = _getCloseBtn(item.type);
           });
-          _wrapClasses += " mfp-close-btn-in";
+          _wrapClasses += ' mfp-close-btn-in';
         }
       }
 
       if (mfp.st.alignTop) {
-        _wrapClasses += " mfp-align-top";
+        _wrapClasses += ' mfp-align-top';
       }
 
       if (mfp.fixedContentPos) {
         mfp.wrap.css({
           overflow: mfp.st.overflowY,
-          overflowX: "hidden",
+          overflowX: 'hidden',
           overflowY: mfp.st.overflowY,
         });
       } else {
         mfp.wrap.css({
           top: _window.scrollTop(),
-          position: "absolute",
+          position: 'absolute',
         });
       }
-      if (
-        mfp.st.fixedBgPos === false ||
-        (mfp.st.fixedBgPos === "auto" && !mfp.fixedContentPos)
-      ) {
+      if (mfp.st.fixedBgPos === false || (mfp.st.fixedBgPos === 'auto' && !mfp.fixedContentPos)) {
         mfp.bgOverlay.css({
           height: _document.height(),
-          position: "absolute",
+          position: 'absolute',
         });
       }
 
       if (mfp.st.enableEscapeKey) {
         // Close on ESC key
-        _document.on("keyup" + EVENT_NS, function (e) {
+        _document.on('keyup' + EVENT_NS, function (e) {
           if (e.keyCode === 27) {
             mfp.close();
           }
         });
       }
 
-      _window.on("resize" + EVENT_NS, function () {
+      _window.on('resize' + EVENT_NS, function () {
         mfp.updateSize();
       });
 
       if (!mfp.st.closeOnContentClick) {
-        _wrapClasses += " mfp-auto-cursor";
+        _wrapClasses += ' mfp-auto-cursor';
       }
 
       if (_wrapClasses) mfp.wrap.addClass(_wrapClasses);
@@ -320,16 +310,16 @@
 
       if (mfp.fixedContentPos) {
         if (!mfp.isIE7) {
-          windowStyles.overflow = "hidden";
+          windowStyles.overflow = 'hidden';
         } else {
           // ie7 double-scroll bug
-          $("body, html").css("overflow", "hidden");
+          $('body, html').css('overflow', 'hidden');
         }
       }
 
       var classesToadd = mfp.st.mainClass;
       if (mfp.isIE7) {
-        classesToadd += " mfp-ie7";
+        classesToadd += ' mfp-ie7';
       }
       if (classesToadd) {
         mfp._addClassToMFP(classesToadd);
@@ -338,15 +328,13 @@
       // add content
       mfp.updateItemHTML();
 
-      _mfpTrigger("BuildControls");
+      _mfpTrigger('BuildControls');
 
       // remove scrollbar, add margin e.t.c
-      $("html").css(windowStyles);
+      $('html').css(windowStyles);
 
       // add everything to DOM
-      mfp.bgOverlay
-        .add(mfp.wrap)
-        .prependTo(mfp.st.prependTo || $(document.body));
+      mfp.bgOverlay.add(mfp.wrap).prependTo(mfp.st.prependTo || $(document.body));
 
       // Save last focused element
       mfp._lastFocusedEl = document.activeElement;
@@ -362,7 +350,7 @@
         }
 
         // Trap the focus in popup
-        _document.on("focusin" + EVENT_NS, mfp._onFocusIn);
+        _document.on('focusin' + EVENT_NS, mfp._onFocusIn);
       }, 16);
 
       mfp.isOpen = true;
@@ -397,41 +385,38 @@
     _close: function () {
       _mfpTrigger(CLOSE_EVENT);
 
-      var classesToRemove = REMOVING_CLASS + " " + READY_CLASS + " ";
+      var classesToRemove = REMOVING_CLASS + ' ' + READY_CLASS + ' ';
 
       mfp.bgOverlay.detach();
       mfp.wrap.detach();
       mfp.container.empty();
 
       if (mfp.st.mainClass) {
-        classesToRemove += mfp.st.mainClass + " ";
+        classesToRemove += mfp.st.mainClass + ' ';
       }
 
       mfp._removeClassFromMFP(classesToRemove);
 
       if (mfp.fixedContentPos) {
-        var windowStyles = { marginRight: "" };
+        var windowStyles = { marginRight: '' };
         if (mfp.isIE7) {
-          $("body, html").css("overflow", "");
+          $('body, html').css('overflow', '');
         } else {
-          windowStyles.overflow = "";
+          windowStyles.overflow = '';
         }
-        $("html").css(windowStyles);
+        $('html').css(windowStyles);
       }
 
-      _document.off("keyup" + EVENT_NS + " focusin" + EVENT_NS);
+      _document.off('keyup' + EVENT_NS + ' focusin' + EVENT_NS);
       mfp.ev.off(EVENT_NS);
 
       // clean up DOM elements that aren't removed
-      mfp.wrap.attr("class", "mfp-wrap").removeAttr("style");
-      mfp.bgOverlay.attr("class", "mfp-bg");
-      mfp.container.attr("class", "mfp-container");
+      mfp.wrap.attr('class', 'mfp-wrap').removeAttr('style');
+      mfp.bgOverlay.attr('class', 'mfp-bg');
+      mfp.container.attr('class', 'mfp-container');
 
       // remove close button from target element
-      if (
-        mfp.st.showCloseBtn &&
-        (!mfp.st.closeBtnInside || mfp.currTemplate[mfp.currItem.type] === true)
-      ) {
+      if (mfp.st.showCloseBtn && (!mfp.st.closeBtnInside || mfp.currTemplate[mfp.currItem.type] === true)) {
         if (mfp.currTemplate.closeBtn) mfp.currTemplate.closeBtn.detach();
       }
 
@@ -449,20 +434,19 @@
     updateSize: function (winHeight) {
       if (mfp.isIOS) {
         // fixes iOS nav bars https://github.com/dimsemenov/Magnific-Popup/issues/2
-        var zoomLevel =
-          document.documentElement.clientWidth / window.innerWidth;
+        var zoomLevel = document.documentElement.clientWidth / window.innerWidth;
         var height = window.innerHeight * zoomLevel;
-        mfp.wrap.css("height", height);
+        mfp.wrap.css('height', height);
         mfp.wH = height;
       } else {
         mfp.wH = winHeight || _window.height();
       }
       // Fixes #84: popup incorrectly positioned with position:relative on body
       if (!mfp.fixedContentPos) {
-        mfp.wrap.css("height", mfp.wH);
+        mfp.wrap.css('height', mfp.wH);
       }
 
-      _mfpTrigger("Resize");
+      _mfpTrigger('Resize');
     },
 
     /**
@@ -482,10 +466,7 @@
 
       var type = item.type;
 
-      _mfpTrigger("BeforeChange", [
-        mfp.currItem ? mfp.currItem.type : "",
-        type,
-      ]);
+      _mfpTrigger('BeforeChange', [mfp.currItem ? mfp.currItem.type : '', type]);
       // BeforeChange event works like so:
       // _mfpOn('BeforeChange', function(e, prevType, newType) { });
 
@@ -495,7 +476,7 @@
         var markup = mfp.st[type] ? mfp.st[type].markup : false;
 
         // allows to modify markup
-        _mfpTrigger("FirstMarkupParse", markup);
+        _mfpTrigger('FirstMarkupParse', markup);
 
         if (markup) {
           mfp.currTemplate[type] = $(markup);
@@ -506,12 +487,10 @@
       }
 
       if (_prevContentType && _prevContentType !== item.type) {
-        mfp.container.removeClass("mfp-" + _prevContentType + "-holder");
+        mfp.container.removeClass('mfp-' + _prevContentType + '-holder');
       }
 
-      var newContent = mfp[
-        "get" + type.charAt(0).toUpperCase() + type.slice(1)
-      ](item, mfp.currTemplate[type]);
+      var newContent = mfp['get' + type.charAt(0).toUpperCase() + type.slice(1)](item, mfp.currTemplate[type]);
       mfp.appendContent(newContent, type);
 
       item.preloaded = true;
@@ -522,7 +501,7 @@
       // Append container back after its content changed
       mfp.container.prepend(mfp.contentContainer);
 
-      _mfpTrigger("AfterChange");
+      _mfpTrigger('AfterChange');
     },
 
     /**
@@ -532,24 +511,20 @@
       mfp.content = newContent;
 
       if (newContent) {
-        if (
-          mfp.st.showCloseBtn &&
-          mfp.st.closeBtnInside &&
-          mfp.currTemplate[type] === true
-        ) {
+        if (mfp.st.showCloseBtn && mfp.st.closeBtnInside && mfp.currTemplate[type] === true) {
           // if there is no markup, we just append close button element inside
-          if (!mfp.content.find(".mfp-close").length) {
+          if (!mfp.content.find('.mfp-close').length) {
             mfp.content.append(_getCloseBtn());
           }
         } else {
           mfp.content = newContent;
         }
       } else {
-        mfp.content = "";
+        mfp.content = '';
       }
 
       _mfpTrigger(BEFORE_APPEND_EVENT);
-      mfp.container.addClass("mfp-" + type + "-holder");
+      mfp.container.addClass('mfp-' + type + '-holder');
 
       mfp.contentContainer.append(mfp.content);
     },
@@ -574,23 +549,23 @@
 
         // check for 'mfp-TYPE' class
         for (var i = 0; i < types.length; i++) {
-          if (item.el.hasClass("mfp-" + types[i])) {
+          if (item.el.hasClass('mfp-' + types[i])) {
             type = types[i];
             break;
           }
         }
 
-        item.src = item.el.attr("data-mfp-src");
+        item.src = item.el.attr('data-mfp-src');
         if (!item.src) {
-          item.src = item.el.attr("href");
+          item.src = item.el.attr('href');
         }
       }
 
-      item.type = type || mfp.st.type || "inline";
+      item.type = type || mfp.st.type || 'inline';
       item.index = index;
       item.parsed = true;
       mfp.items[index] = item;
-      _mfpTrigger("ElementParse", item);
+      _mfpTrigger('ElementParse', item);
 
       return mfp.items[index];
     },
@@ -608,7 +583,7 @@
         options = {};
       }
 
-      var eName = "click.magnificPopup";
+      var eName = 'click.magnificPopup';
       options.mainEl = el;
 
       if (options.items) {
@@ -625,22 +600,13 @@
       }
     },
     _openClick: function (e, el, options) {
-      var midClick =
-        options.midClick !== undefined
-          ? options.midClick
-          : $.magnificPopup.defaults.midClick;
+      var midClick = options.midClick !== undefined ? options.midClick : $.magnificPopup.defaults.midClick;
 
-      if (
-        !midClick &&
-        (e.which === 2 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey)
-      ) {
+      if (!midClick && (e.which === 2 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey)) {
         return;
       }
 
-      var disableOn =
-        options.disableOn !== undefined
-          ? options.disableOn
-          : $.magnificPopup.defaults.disableOn;
+      var disableOn = options.disableOn !== undefined ? options.disableOn : $.magnificPopup.defaults.disableOn;
 
       if (disableOn) {
         if ($.isFunction(disableOn)) {
@@ -677,10 +643,10 @@
     updateStatus: function (status, text) {
       if (mfp.preloader) {
         if (_prevStatus !== status) {
-          mfp.container.removeClass("mfp-s-" + _prevStatus);
+          mfp.container.removeClass('mfp-s-' + _prevStatus);
         }
 
-        if (!text && status === "loading") {
+        if (!text && status === 'loading') {
           text = mfp.st.tLoading;
         }
 
@@ -689,18 +655,18 @@
           text: text,
         };
         // allows to modify status
-        _mfpTrigger("UpdateStatus", data);
+        _mfpTrigger('UpdateStatus', data);
 
         status = data.status;
         text = data.text;
 
         mfp.preloader.html(text);
 
-        mfp.preloader.find("a").on("click", function (e) {
+        mfp.preloader.find('a').on('click', function (e) {
           e.stopImmediatePropagation();
         });
 
-        mfp.container.addClass("mfp-s-" + status);
+        mfp.container.addClass('mfp-s-' + status);
         _prevStatus = status;
       }
     },
@@ -722,11 +688,7 @@
         return true;
       } else {
         // We close the popup if click is on close button or on preloader. Or if there is no content.
-        if (
-          !mfp.content ||
-          $(target).hasClass("mfp-close") ||
-          (mfp.preloader && target === mfp.preloader[0])
-        ) {
+        if (!mfp.content || $(target).hasClass('mfp-close') || (mfp.preloader && target === mfp.preloader[0])) {
           return true;
         }
 
@@ -753,10 +715,7 @@
       mfp.wrap.removeClass(cName);
     },
     _hasScrollBar: function (winHeight) {
-      return (
-        (mfp.isIE7 ? _document.height() : document.body.scrollHeight) >
-        (winHeight || _window.height())
-      );
+      return (mfp.isIE7 ? _document.height() : document.body.scrollHeight) > (winHeight || _window.height());
     },
     _setFocus: function () {
       (mfp.st.focus ? mfp.content.find(mfp.st.focus).eq(0) : mfp.wrap).focus();
@@ -778,30 +737,28 @@
         if (value === undefined || value === false) {
           return true;
         }
-        arr = key.split("_");
+        arr = key.split('_');
         if (arr.length > 1) {
-          var el = template.find(EVENT_NS + "-" + arr[0]);
+          var el = template.find(EVENT_NS + '-' + arr[0]);
 
           if (el.length > 0) {
             var attr = arr[1];
-            if (attr === "replaceWith") {
+            if (attr === 'replaceWith') {
               if (el[0] !== value[0]) {
                 el.replaceWith(value);
               }
-            } else if (attr === "img") {
-              if (el.is("img")) {
-                el.attr("src", value);
+            } else if (attr === 'img') {
+              if (el.is('img')) {
+                el.attr('src', value);
               } else {
-                el.replaceWith(
-                  $("<img>").attr("src", value).attr("class", el.attr("class")),
-                );
+                el.replaceWith($('<img>').attr('src', value).attr('class', el.attr('class')));
               }
             } else {
               el.attr(arr[1], value);
             }
           }
         } else {
-          template.find(EVENT_NS + "-" + key).html(value);
+          template.find(EVENT_NS + '-' + key).html(value);
         }
       });
     },
@@ -809,9 +766,8 @@
     _getScrollbarSize: function () {
       // thx David
       if (mfp.scrollbarSize === undefined) {
-        var scrollDiv = document.createElement("div");
-        scrollDiv.style.cssText =
-          "width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;";
+        var scrollDiv = document.createElement('div');
+        scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
         document.body.appendChild(scrollDiv);
         mfp.scrollbarSize = scrollDiv.offsetWidth - scrollDiv.clientWidth;
         document.body.removeChild(scrollDiv);
@@ -864,11 +820,11 @@
 
       midClick: false,
 
-      mainClass: "",
+      mainClass: '',
 
       preloader: true,
 
-      focus: "", // CSS selector of input to focus after popup is opened
+      focus: '', // CSS selector of input to focus after popup is opened
 
       closeOnContentClick: false,
 
@@ -888,18 +844,17 @@
 
       prependTo: null,
 
-      fixedContentPos: "auto",
+      fixedContentPos: 'auto',
 
-      fixedBgPos: "auto",
+      fixedBgPos: 'auto',
 
-      overflowY: "auto",
+      overflowY: 'auto',
 
-      closeMarkup:
-        '<button title="%title%" type="button" class="mfp-close">&#215;</button>',
+      closeMarkup: '<button title="%title%" type="button" class="mfp-close">&#215;</button>',
 
-      tClose: "Close (Esc)",
+      tClose: 'Close (Esc)',
 
-      tLoading: "Loading...",
+      tLoading: 'Loading...',
 
       autoFocusLast: true,
     },
@@ -911,10 +866,10 @@
     var jqEl = $(this);
 
     // We call some API method of first param is a string
-    if (typeof options === "string") {
-      if (options === "open") {
+    if (typeof options === 'string') {
+      if (options === 'open') {
         var items,
-          itemOpts = _isJQ ? jqEl.data("magnificPopup") : jqEl[0].magnificPopup,
+          itemOpts = _isJQ ? jqEl.data('magnificPopup') : jqEl[0].magnificPopup,
           index = parseInt(arguments[1], 10) || 0;
 
         if (itemOpts.items) {
@@ -928,8 +883,7 @@
         }
         mfp._openClick({ mfpEl: items }, jqEl, itemOpts);
       } else {
-        if (mfp.isOpen)
-          mfp[options].apply(mfp, Array.prototype.slice.call(arguments, 1));
+        if (mfp.isOpen) mfp[options].apply(mfp, Array.prototype.slice.call(arguments, 1));
       }
     } else {
       // clone options obj
@@ -941,7 +895,7 @@
        * we assign "options" object directly to the DOM element. FTW!
        */
       if (_isJQ) {
-        jqEl.data("magnificPopup", options);
+        jqEl.data('magnificPopup', options);
       } else {
         jqEl[0].magnificPopup = options;
       }
@@ -955,30 +909,28 @@
 
   /*>>inline*/
 
-  var INLINE_NS = "inline",
+  var INLINE_NS = 'inline',
     _hiddenClass,
     _inlinePlaceholder,
     _lastInlineElement,
     _putInlineElementsBack = function () {
       if (_lastInlineElement) {
-        _inlinePlaceholder
-          .after(_lastInlineElement.addClass(_hiddenClass))
-          .detach();
+        _inlinePlaceholder.after(_lastInlineElement.addClass(_hiddenClass)).detach();
         _lastInlineElement = null;
       }
     };
 
   $.magnificPopup.registerModule(INLINE_NS, {
     options: {
-      hiddenClass: "hide", // will be appended with `mfp-` prefix
-      markup: "",
-      tNotFound: "Content not found",
+      hiddenClass: 'hide', // will be appended with `mfp-` prefix
+      markup: '',
+      tNotFound: 'Content not found',
     },
     proto: {
       initInline: function () {
         mfp.types.push(INLINE_NS);
 
-        _mfpOn(CLOSE_EVENT + "." + INLINE_NS, function () {
+        _mfpOn(CLOSE_EVENT + '.' + INLINE_NS, function () {
           _putInlineElementsBack();
         });
       },
@@ -997,26 +949,23 @@
               if (!_inlinePlaceholder) {
                 _hiddenClass = inlineSt.hiddenClass;
                 _inlinePlaceholder = _getEl(_hiddenClass);
-                _hiddenClass = "mfp-" + _hiddenClass;
+                _hiddenClass = 'mfp-' + _hiddenClass;
               }
               // replace target inline element with placeholder
-              _lastInlineElement = el
-                .after(_inlinePlaceholder)
-                .detach()
-                .removeClass(_hiddenClass);
+              _lastInlineElement = el.after(_inlinePlaceholder).detach().removeClass(_hiddenClass);
             }
 
-            mfp.updateStatus("ready");
+            mfp.updateStatus('ready');
           } else {
-            mfp.updateStatus("error", inlineSt.tNotFound);
-            el = $("<div>");
+            mfp.updateStatus('error', inlineSt.tNotFound);
+            el = $('<div>');
           }
 
           item.inlineElement = el;
           return el;
         }
 
-        mfp.updateStatus("ready");
+        mfp.updateStatus('ready');
         mfp._parseMarkup(template, {}, item);
         return template;
       },
@@ -1026,7 +975,7 @@
   /*>>inline*/
 
   /*>>ajax*/
-  var AJAX_NS = "ajax",
+  var AJAX_NS = 'ajax',
     _ajaxCur,
     _removeAjaxCursor = function () {
       if (_ajaxCur) {
@@ -1043,7 +992,7 @@
   $.magnificPopup.registerModule(AJAX_NS, {
     options: {
       settings: null,
-      cursor: "mfp-ajax-cur",
+      cursor: 'mfp-ajax-cur',
       tError: '<a href="%url%">The content</a> could not be loaded.',
     },
 
@@ -1052,15 +1001,15 @@
         mfp.types.push(AJAX_NS);
         _ajaxCur = mfp.st.ajax.cursor;
 
-        _mfpOn(CLOSE_EVENT + "." + AJAX_NS, _destroyAjaxRequest);
-        _mfpOn("BeforeChange." + AJAX_NS, _destroyAjaxRequest);
+        _mfpOn(CLOSE_EVENT + '.' + AJAX_NS, _destroyAjaxRequest);
+        _mfpOn('BeforeChange.' + AJAX_NS, _destroyAjaxRequest);
       },
       getAjax: function (item) {
         if (_ajaxCur) {
           $(document.body).addClass(_ajaxCur);
         }
 
-        mfp.updateStatus("loading");
+        mfp.updateStatus('loading');
 
         var opts = $.extend(
           {
@@ -1071,7 +1020,7 @@
                 xhr: jqXHR,
               };
 
-              _mfpTrigger("ParseAjax", temp);
+              _mfpTrigger('ParseAjax', temp);
 
               mfp.appendContent($(temp.data), AJAX_NS);
 
@@ -1085,25 +1034,22 @@
                 mfp.wrap.addClass(READY_CLASS);
               }, 16);
 
-              mfp.updateStatus("ready");
+              mfp.updateStatus('ready');
 
-              _mfpTrigger("AjaxContentAdded");
+              _mfpTrigger('AjaxContentAdded');
             },
             error: function () {
               _removeAjaxCursor();
               item.finished = item.loadError = true;
-              mfp.updateStatus(
-                "error",
-                mfp.st.ajax.tError.replace("%url%", item.src),
-              );
+              mfp.updateStatus('error', mfp.st.ajax.tError.replace('%url%', item.src));
             },
           },
-          mfp.st.ajax.settings,
+          mfp.st.ajax.settings
         );
 
         mfp.req = $.ajax(opts);
 
-        return "";
+        return '';
       },
     },
   });
@@ -1121,29 +1067,29 @@
         if ($.isFunction(src)) {
           return src.call(mfp, item);
         } else if (item.el) {
-          return item.el.attr(src) || "";
+          return item.el.attr(src) || '';
         }
       }
-      return "";
+      return '';
     };
 
-  $.magnificPopup.registerModule("image", {
+  $.magnificPopup.registerModule('image', {
     options: {
       markup:
         '<div class="mfp-figure">' +
         '<div class="mfp-close"></div>' +
-        "<figure>" +
+        '<figure>' +
         '<div class="mfp-img"></div>' +
-        "<figcaption>" +
+        '<figcaption>' +
         '<div class="mfp-bottom-bar">' +
         '<div class="mfp-title"></div>' +
         '<div class="mfp-counter"></div>' +
-        "</div>" +
-        "</figcaption>" +
-        "</figure>" +
-        "</div>",
-      cursor: "mfp-zoom-out-cur",
-      titleSrc: "title",
+        '</div>' +
+        '</figcaption>' +
+        '</figure>' +
+        '</div>',
+      cursor: 'mfp-zoom-out-cur',
+      titleSrc: 'title',
       verticalFit: true,
       tError: '<a href="%url%">The image</a> could not be loaded.',
     },
@@ -1151,12 +1097,12 @@
     proto: {
       initImage: function () {
         var imgSt = mfp.st.image,
-          ns = ".image";
+          ns = '.image';
 
-        mfp.types.push("image");
+        mfp.types.push('image');
 
         _mfpOn(OPEN_EVENT + ns, function () {
-          if (mfp.currItem.type === "image" && imgSt.cursor) {
+          if (mfp.currItem.type === 'image' && imgSt.cursor) {
             $(document.body).addClass(imgSt.cursor);
           }
         });
@@ -1165,12 +1111,12 @@
           if (imgSt.cursor) {
             $(document.body).removeClass(imgSt.cursor);
           }
-          _window.off("resize" + EVENT_NS);
+          _window.off('resize' + EVENT_NS);
         });
 
-        _mfpOn("Resize" + ns, mfp.resizeImage);
+        _mfpOn('Resize' + ns, mfp.resizeImage);
         if (mfp.isLowIE) {
-          _mfpOn("AfterChange", mfp.resizeImage);
+          _mfpOn('AfterChange', mfp.resizeImage);
         }
       },
       resizeImage: function () {
@@ -1181,11 +1127,9 @@
           var decr = 0;
           // fix box-sizing in ie7/8
           if (mfp.isLowIE) {
-            decr =
-              parseInt(item.img.css("padding-top"), 10) +
-              parseInt(item.img.css("padding-bottom"), 10);
+            decr = parseInt(item.img.css('padding-top'), 10) + parseInt(item.img.css('padding-bottom'), 10);
           }
-          item.img.css("max-height", mfp.wH - decr);
+          item.img.css('max-height', mfp.wH - decr);
         }
       },
       _onImageHasSize: function (item) {
@@ -1198,10 +1142,10 @@
 
           item.isCheckingImgSize = false;
 
-          _mfpTrigger("ImageHasSize", item);
+          _mfpTrigger('ImageHasSize', item);
 
           if (item.imgHidden) {
-            if (mfp.content) mfp.content.removeClass("mfp-loading");
+            if (mfp.content) mfp.content.removeClass('mfp-loading');
 
             item.imgHidden = false;
           }
@@ -1249,18 +1193,18 @@
           onLoadComplete = function () {
             if (item) {
               if (item.img[0].complete) {
-                item.img.off(".mfploader");
+                item.img.off('.mfploader');
 
                 if (item === mfp.currItem) {
                   mfp._onImageHasSize(item);
 
-                  mfp.updateStatus("ready");
+                  mfp.updateStatus('ready');
                 }
 
                 item.hasSize = true;
                 item.loaded = true;
 
-                _mfpTrigger("ImageLoadComplete");
+                _mfpTrigger('ImageLoadComplete');
               } else {
                 // if image complete check fails 200 times (20 sec), we assume that there was an error.
                 guard++;
@@ -1275,13 +1219,10 @@
           // image error handler
           onLoadError = function () {
             if (item) {
-              item.img.off(".mfploader");
+              item.img.off('.mfploader');
               if (item === mfp.currItem) {
                 mfp._onImageHasSize(item);
-                mfp.updateStatus(
-                  "error",
-                  imgSt.tError.replace("%url%", item.src),
-                );
+                mfp.updateStatus('error', imgSt.tError.replace('%url%', item.src));
               }
 
               item.hasSize = true;
@@ -1291,21 +1232,19 @@
           },
           imgSt = mfp.st.image;
 
-        var el = template.find(".mfp-img");
+        var el = template.find('.mfp-img');
         if (el.length) {
-          var img = document.createElement("img");
-          img.className = "mfp-img";
-          if (item.el && item.el.find("img").length) {
-            img.alt = item.el.find("img").attr("alt");
+          var img = document.createElement('img');
+          img.className = 'mfp-img';
+          if (item.el && item.el.find('img').length) {
+            img.alt = item.el.find('img').attr('alt');
           }
-          item.img = $(img)
-            .on("load.mfploader", onLoadComplete)
-            .on("error.mfploader", onLoadError);
+          item.img = $(img).on('load.mfploader', onLoadComplete).on('error.mfploader', onLoadError);
           img.src = item.src;
 
           // without clone() "error" event is not firing when IMG is replaced by new IMG
           // TODO: find a way to avoid such cloning
-          if (el.is("img")) {
+          if (el.is('img')) {
             item.img = item.img.clone();
           }
 
@@ -1323,7 +1262,7 @@
             title: _getTitle(item),
             img_replaceWith: item.img,
           },
-          item,
+          item
         );
 
         mfp.resizeImage();
@@ -1332,21 +1271,21 @@
           if (_imgInterval) clearInterval(_imgInterval);
 
           if (item.loadError) {
-            template.addClass("mfp-loading");
-            mfp.updateStatus("error", imgSt.tError.replace("%url%", item.src));
+            template.addClass('mfp-loading');
+            mfp.updateStatus('error', imgSt.tError.replace('%url%', item.src));
           } else {
-            template.removeClass("mfp-loading");
-            mfp.updateStatus("ready");
+            template.removeClass('mfp-loading');
+            mfp.updateStatus('ready');
           }
           return template;
         }
 
-        mfp.updateStatus("loading");
+        mfp.updateStatus('loading');
         item.loading = true;
 
         if (!item.hasSize) {
           item.imgHidden = true;
-          template.addClass("mfp-loading");
+          template.addClass('mfp-loading');
           mfp.findImageSize(item);
         }
 
@@ -1361,26 +1300,25 @@
   var hasMozTransform,
     getHasMozTransform = function () {
       if (hasMozTransform === undefined) {
-        hasMozTransform =
-          document.createElement("p").style.MozTransform !== undefined;
+        hasMozTransform = document.createElement('p').style.MozTransform !== undefined;
       }
       return hasMozTransform;
     };
 
-  $.magnificPopup.registerModule("zoom", {
+  $.magnificPopup.registerModule('zoom', {
     options: {
       enabled: false,
-      easing: "ease-in-out",
+      easing: 'ease-in-out',
       duration: 300,
       opener: function (element) {
-        return element.is("img") ? element : element.find("img");
+        return element.is('img') ? element : element.find('img');
       },
     },
 
     proto: {
       initZoom: function () {
         var zoomSt = mfp.st.zoom,
-          ns = ".zoom",
+          ns = '.zoom',
           image;
 
         if (!zoomSt.enabled || !mfp.supportsTransition) {
@@ -1389,41 +1327,32 @@
 
         var duration = zoomSt.duration,
           getElToAnimate = function (image) {
-            var newImg = image
-                .clone()
-                .removeAttr("style")
-                .removeAttr("class")
-                .addClass("mfp-animated-image"),
-              transition =
-                "all " + zoomSt.duration / 1000 + "s " + zoomSt.easing,
+            var newImg = image.clone().removeAttr('style').removeAttr('class').addClass('mfp-animated-image'),
+              transition = 'all ' + zoomSt.duration / 1000 + 's ' + zoomSt.easing,
               cssObj = {
-                position: "fixed",
+                position: 'fixed',
                 zIndex: 9999,
                 left: 0,
                 top: 0,
-                "-webkit-backface-visibility": "hidden",
+                '-webkit-backface-visibility': 'hidden',
               },
-              t = "transition";
+              t = 'transition';
 
-            cssObj["-webkit-" + t] =
-              cssObj["-moz-" + t] =
-              cssObj["-o-" + t] =
-              cssObj[t] =
-                transition;
+            cssObj['-webkit-' + t] = cssObj['-moz-' + t] = cssObj['-o-' + t] = cssObj[t] = transition;
 
             newImg.css(cssObj);
             return newImg;
           },
           showMainContent = function () {
-            mfp.content.css("visibility", "visible");
+            mfp.content.css('visibility', 'visible');
           },
           openTimeout,
           animatedImg;
 
-        _mfpOn("BuildControls" + ns, function () {
+        _mfpOn('BuildControls' + ns, function () {
           if (mfp._allowZoom()) {
             clearTimeout(openTimeout);
-            mfp.content.css("visibility", "hidden");
+            mfp.content.css('visibility', 'hidden');
 
             // Basically, all code below does is clones existing image, puts in on top of the current one and animated it
 
@@ -1448,7 +1377,7 @@
                 setTimeout(function () {
                   animatedImg.remove();
                   image = animatedImg = null;
-                  _mfpTrigger("ZoomAnimationEnded");
+                  _mfpTrigger('ZoomAnimationEnded');
                 }, 16); // avoid blink when switching images
               }, duration); // this timeout equals animation duration
             }, 16); // by adding this timeout we avoid short glitch at the beginning of animation
@@ -1472,7 +1401,7 @@
 
             animatedImg.css(mfp._getOffset(true));
             mfp.wrap.append(animatedImg);
-            mfp.content.css("visibility", "hidden");
+            mfp.content.css('visibility', 'hidden');
 
             setTimeout(function () {
               animatedImg.css(mfp._getOffset());
@@ -1492,7 +1421,7 @@
       },
 
       _allowZoom: function () {
-        return mfp.currItem.type === "image";
+        return mfp.currItem.type === 'image';
       },
 
       _getItemToZoom: function () {
@@ -1513,8 +1442,8 @@
         }
 
         var offset = el.offset();
-        var paddingTop = parseInt(el.css("padding-top"), 10);
-        var paddingBottom = parseInt(el.css("padding-bottom"), 10);
+        var paddingTop = parseInt(el.css('padding-top'), 10);
+        var paddingBottom = parseInt(el.css('padding-bottom'), 10);
         offset.top -= $(window).scrollTop() - paddingTop;
 
         /*
@@ -1525,16 +1454,12 @@
         var obj = {
           width: el.width(),
           // fix Zepto height+padding issue
-          height:
-            (_isJQ ? el.innerHeight() : el[0].offsetHeight) -
-            paddingBottom -
-            paddingTop,
+          height: (_isJQ ? el.innerHeight() : el[0].offsetHeight) - paddingBottom - paddingTop,
         };
 
         // I hate to do this, but there is no another option
         if (getHasMozTransform()) {
-          obj["-moz-transform"] = obj["transform"] =
-            "translate(" + offset.left + "px," + offset.top + "px)";
+          obj['-moz-transform'] = obj['transform'] = 'translate(' + offset.left + 'px,' + offset.top + 'px)';
         } else {
           obj.left = offset.left;
           obj.top = offset.top;
@@ -1548,11 +1473,11 @@
 
   /*>>iframe*/
 
-  var IFRAME_NS = "iframe",
-    _emptyPage = "//about:blank",
+  var IFRAME_NS = 'iframe',
+    _emptyPage = '//about:blank',
     _fixIframeBugs = function (isShowing) {
       if (mfp.currTemplate[IFRAME_NS]) {
-        var el = mfp.currTemplate[IFRAME_NS].find("iframe");
+        var el = mfp.currTemplate[IFRAME_NS].find('iframe');
         if (el.length) {
           // reset src after the popup is closed to avoid "video keeps playing after popup is closed" bug
           if (!isShowing) {
@@ -1561,7 +1486,7 @@
 
           // IE8 black screen bug fix
           if (mfp.isIE8) {
-            el.css("display", isShowing ? "block" : "none");
+            el.css('display', isShowing ? 'block' : 'none');
           }
         }
       }
@@ -1573,25 +1498,25 @@
         '<div class="mfp-iframe-scaler">' +
         '<div class="mfp-close"></div>' +
         '<iframe class="mfp-iframe" src="//about:blank" frameborder="0" allowfullscreen></iframe>' +
-        "</div>",
+        '</div>',
 
-      srcAction: "iframe_src",
+      srcAction: 'iframe_src',
 
       // we don't care and support only one default type of URL by default
       patterns: {
         youtube: {
-          index: "youtube.com",
-          id: "v=",
-          src: "//www.youtube.com/embed/%id%?autoplay=1",
+          index: 'youtube.com',
+          id: 'v=',
+          src: '//www.youtube.com/embed/%id%?autoplay=1',
         },
         vimeo: {
-          index: "vimeo.com/",
-          id: "/",
-          src: "//player.vimeo.com/video/%id%?autoplay=1",
+          index: 'vimeo.com/',
+          id: '/',
+          src: '//player.vimeo.com/video/%id%?autoplay=1',
         },
         gmaps: {
-          index: "//maps.google.",
-          src: "%id%&output=embed",
+          index: '//maps.google.',
+          src: '%id%&output=embed',
         },
       },
     },
@@ -1600,7 +1525,7 @@
       initIframe: function () {
         mfp.types.push(IFRAME_NS);
 
-        _mfpOn("BeforeChange", function (e, prevType, newType) {
+        _mfpOn('BeforeChange', function (e, prevType, newType) {
           if (prevType !== newType) {
             if (prevType === IFRAME_NS) {
               _fixIframeBugs(); // iframe if removed
@@ -1612,7 +1537,7 @@
           //}
         });
 
-        _mfpOn(CLOSE_EVENT + "." + IFRAME_NS, function () {
+        _mfpOn(CLOSE_EVENT + '.' + IFRAME_NS, function () {
           _fixIframeBugs();
         });
       },
@@ -1624,16 +1549,13 @@
         $.each(iframeSt.patterns, function () {
           if (embedSrc.indexOf(this.index) > -1) {
             if (this.id) {
-              if (typeof this.id === "string") {
-                embedSrc = embedSrc.substr(
-                  embedSrc.lastIndexOf(this.id) + this.id.length,
-                  embedSrc.length,
-                );
+              if (typeof this.id === 'string') {
+                embedSrc = embedSrc.substr(embedSrc.lastIndexOf(this.id) + this.id.length, embedSrc.length);
               } else {
                 embedSrc = this.id.call(this, embedSrc);
               }
             }
-            embedSrc = this.src.replace("%id%", embedSrc);
+            embedSrc = this.src.replace('%id%', embedSrc);
             return false; // break;
           }
         });
@@ -1644,7 +1566,7 @@
         }
         mfp._parseMarkup(template, dataObj, item);
 
-        mfp.updateStatus("ready");
+        mfp.updateStatus('ready');
 
         return template;
       },
@@ -1670,34 +1592,33 @@
       return text.replace(/%curr%/gi, curr + 1).replace(/%total%/gi, total);
     };
 
-  $.magnificPopup.registerModule("gallery", {
+  $.magnificPopup.registerModule('gallery', {
     options: {
       enabled: false,
-      arrowMarkup:
-        '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',
+      arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',
       preload: [0, 2],
       navigateByImgClick: true,
       arrows: true,
 
-      tPrev: "Previous (Left arrow key)",
-      tNext: "Next (Right arrow key)",
-      tCounter: "%curr% of %total%",
+      tPrev: 'Previous (Left arrow key)',
+      tNext: 'Next (Right arrow key)',
+      tCounter: '%curr% of %total%',
     },
 
     proto: {
       initGallery: function () {
         var gSt = mfp.st.gallery,
-          ns = ".mfp-gallery";
+          ns = '.mfp-gallery';
 
         mfp.direction = true; // true - next, false - prev
 
         if (!gSt || !gSt.enabled) return false;
 
-        _wrapClasses += " mfp-gallery";
+        _wrapClasses += ' mfp-gallery';
 
         _mfpOn(OPEN_EVENT + ns, function () {
           if (gSt.navigateByImgClick) {
-            mfp.wrap.on("click" + ns, ".mfp-img", function () {
+            mfp.wrap.on('click' + ns, '.mfp-img', function () {
               if (mfp.items.length > 1) {
                 mfp.next();
                 return false;
@@ -1705,7 +1626,7 @@
             });
           }
 
-          _document.on("keydown" + ns, function (e) {
+          _document.on('keydown' + ns, function (e) {
             if (e.keyCode === 37) {
               mfp.prev();
             } else if (e.keyCode === 39) {
@@ -1714,34 +1635,25 @@
           });
         });
 
-        _mfpOn("UpdateStatus" + ns, function (e, data) {
+        _mfpOn('UpdateStatus' + ns, function (e, data) {
           if (data.text) {
-            data.text = _replaceCurrTotal(
-              data.text,
-              mfp.currItem.index,
-              mfp.items.length,
-            );
+            data.text = _replaceCurrTotal(data.text, mfp.currItem.index, mfp.items.length);
           }
         });
 
         _mfpOn(MARKUP_PARSE_EVENT + ns, function (e, element, values, item) {
           var l = mfp.items.length;
-          values.counter =
-            l > 1 ? _replaceCurrTotal(gSt.tCounter, item.index, l) : "";
+          values.counter = l > 1 ? _replaceCurrTotal(gSt.tCounter, item.index, l) : '';
         });
 
-        _mfpOn("BuildControls" + ns, function () {
+        _mfpOn('BuildControls' + ns, function () {
           if (mfp.items.length > 1 && gSt.arrows && !mfp.arrowLeft) {
             var markup = gSt.arrowMarkup,
               arrowLeft = (mfp.arrowLeft = $(
-                markup
-                  .replace(/%title%/gi, gSt.tPrev)
-                  .replace(/%dir%/gi, "left"),
+                markup.replace(/%title%/gi, gSt.tPrev).replace(/%dir%/gi, 'left')
               ).addClass(PREVENT_CLOSE_CLASS)),
               arrowRight = (mfp.arrowRight = $(
-                markup
-                  .replace(/%title%/gi, gSt.tNext)
-                  .replace(/%dir%/gi, "right"),
+                markup.replace(/%title%/gi, gSt.tNext).replace(/%dir%/gi, 'right')
               ).addClass(PREVENT_CLOSE_CLASS));
 
             arrowLeft.click(function () {
@@ -1766,7 +1678,7 @@
 
         _mfpOn(CLOSE_EVENT + ns, function () {
           _document.off(ns);
-          mfp.wrap.off("click" + ns);
+          mfp.wrap.off('click' + ns);
           mfp.arrowRight = mfp.arrowLeft = null;
         });
       },
@@ -1810,19 +1722,19 @@
           item = mfp.parseEl(index);
         }
 
-        _mfpTrigger("LazyLoad", item);
+        _mfpTrigger('LazyLoad', item);
 
-        if (item.type === "image") {
+        if (item.type === 'image') {
           item.img = $('<img class="mfp-img" />')
-            .on("load.mfploader", function () {
+            .on('load.mfploader', function () {
               item.hasSize = true;
             })
-            .on("error.mfploader", function () {
+            .on('error.mfploader', function () {
               item.hasSize = true;
               item.loadError = true;
-              _mfpTrigger("LazyLoadError", item);
+              _mfpTrigger('LazyLoadError', item);
             })
-            .attr("src", item.src);
+            .attr('src', item.src);
         }
 
         item.preloaded = true;
@@ -1834,13 +1746,13 @@
 
   /*>>retina*/
 
-  var RETINA_NS = "retina";
+  var RETINA_NS = 'retina';
 
   $.magnificPopup.registerModule(RETINA_NS, {
     options: {
       replaceSrc: function (item) {
         return item.src.replace(/\.\w+$/, function (m) {
-          return "@2x" + m;
+          return '@2x' + m;
         });
       },
       ratio: 1, // Function or number.  Set to 1 to disable.
@@ -1854,13 +1766,13 @@
           ratio = !isNaN(ratio) ? ratio : ratio();
 
           if (ratio > 1) {
-            _mfpOn("ImageHasSize" + "." + RETINA_NS, function (e, item) {
+            _mfpOn('ImageHasSize' + '.' + RETINA_NS, function (e, item) {
               item.img.css({
-                "max-width": item.img[0].naturalWidth / ratio,
-                width: "100%",
+                'max-width': item.img[0].naturalWidth / ratio,
+                width: '100%',
               });
             });
-            _mfpOn("ElementParse" + "." + RETINA_NS, function (e, item) {
+            _mfpOn('ElementParse' + '.' + RETINA_NS, function (e, item) {
               item.src = st.replaceSrc(item, ratio);
             });
           }

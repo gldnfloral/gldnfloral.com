@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z } from 'astro:content';
 
 const seoSchema = z
   .object({
@@ -42,7 +42,7 @@ const pageSchema = z.object({
 });
 
 const paginatedCollectionSchema = z.object({
-  _schema: z.literal("paginated_collection"),
+  _schema: z.literal('paginated_collection'),
   hidden: z.literal(true).optional().default(true),
   title: z.string(),
   description: z.string().optional(),

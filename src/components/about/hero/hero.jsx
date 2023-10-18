@@ -1,17 +1,17 @@
-import MarkdownIt from "markdown-it";
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function AboutHero(block) {
   const renderPlacer = (param) => {
     switch (param) {
-      case "front_bottom":
-        return "image-one";
-      case "back_top_right":
-        return "image-two";
-      case "back_top_left":
-        return "image-three";
+      case 'front_bottom':
+        return 'image-one';
+      case 'back_top_right':
+        return 'image-two';
+      case 'back_top_left':
+        return 'image-three';
       default:
-        return "";
+        return '';
     }
   };
 
@@ -29,12 +29,9 @@ export default function AboutHero(block) {
               />
               <div className="scroll-down d-flex justify-content-center justify-content-xl-start">
                 {block.button && (
-                  <a
-                    href={block.button.link}
-                    className="btn btn-primary btn-lg"
-                  >
-                    {" "}
-                    {block.button.text}{" "}
+                  <a href={block.button.link} className="btn btn-primary btn-lg">
+                    {' '}
+                    {block.button.text}{' '}
                   </a>
                 )}
               </div>

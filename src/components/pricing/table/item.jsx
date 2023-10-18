@@ -1,5 +1,5 @@
 export default function PricingTier({ tier }) {
-  let pricing = "";
+  let pricing = '';
   if (tier.has_discount) {
     pricing = (
       <>
@@ -14,11 +14,7 @@ export default function PricingTier({ tier }) {
               {tier.price}
             </p>
             <div className="vector vector-one">
-              <img
-                src="/images/pricing/Vector1.svg"
-                alt="Vector"
-                loading="lazy"
-              />
+              <img src="/images/pricing/Vector1.svg" alt="Vector" loading="lazy" />
             </div>
           </div>
           <div className="shape-two top-0"></div>
@@ -42,21 +38,15 @@ export default function PricingTier({ tier }) {
   }
   return (
     <div className="col-lg-4">
-      <div
-        className={`card pricing-item ${tier.highlight_tier ? "active" : ""}`}
-      >
+      <div className={`card pricing-item ${tier.highlight_tier ? 'active' : ''}`}>
         <h5 className="card-title">{tier.tier}</h5>
         <p className="card-text">{tier.description}</p>
         {pricing}
         <div className="card-body">
           <ul className="list-unstyled">
             {tier.features.map((feature, i) => (
-              <li key={i} className={feature.active_feature ? "" : "deactive"}>
-                <i
-                  className={`ph-check ${
-                    feature.active_feature ? "" : "deactive"
-                  }`}
-                ></i>
+              <li key={i} className={feature.active_feature ? '' : 'deactive'}>
+                <i className={`ph-check ${feature.active_feature ? '' : 'deactive'}`}></i>
                 {feature.item}
               </li>
             ))}

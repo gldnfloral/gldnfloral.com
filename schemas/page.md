@@ -15,14 +15,14 @@ content_blocks:
     hero_images:
       - image: /images/about/aboutfeature-two.jpg
         image_alt: People working on laptops
-        placement: "front_bottom"
+        placement: 'front_bottom'
       - image: /images/about/aboutfeature-three.jpg
         image_alt: Group working on a laptop
-        placement: "back_top_right"
+        placement: 'back_top_right'
       - image: /images/about/aboutfeature-four.jpg
         image_alt: Staff group photo
-        placement: "back_top_left"
+        placement: 'back_top_left'
     button:
-      text: "Try This Free"
-      link: "/signup"
+      text: 'Try This Free'
+      link: '/signup'
 ---

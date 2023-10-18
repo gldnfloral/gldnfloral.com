@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: About Video
   description: About Video section
-  icon: "play_circle"
+  icon: 'play_circle'
   tags: []
 
 # Defines the structure of this component, as well as the default values

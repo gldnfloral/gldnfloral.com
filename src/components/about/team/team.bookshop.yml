@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: About Team
   description: About Team section
-  icon: "groups"
+  icon: 'groups'
   tags: []
 
 # Defines the structure of this component, as well as the default values
@@ -14,7 +14,7 @@ blueprint:
     - name: Cody Fisher
       designation: Co-Founder & CEO
       image: /images/team/1.jpg
-      image_alt: "Team member: Cody Fisher"
+      image_alt: 'Team member: Cody Fisher'
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

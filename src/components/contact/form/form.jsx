@@ -19,11 +19,7 @@ export default function ContactForm(block) {
                       <a href={`tel:${block.phone.cell}`}>
                         {block.phone.cell}
                         <span>
-                          <img
-                            src={block.phone.image}
-                            alt={block.phone.image_alt}
-                            loading="lazy"
-                          />
+                          <img src={block.phone.image} alt={block.phone.image_alt} loading="lazy" />
                         </span>
                       </a>
                     </>
@@ -36,11 +32,7 @@ export default function ContactForm(block) {
                       <a href={`mailto:${block.email.email}`}>
                         {block.email.email}
                         <span>
-                          <img
-                            src={block.email.image}
-                            alt={block.email.image_alt}
-                            loading="lazy"
-                          />
+                          <img src={block.email.image} alt={block.email.image_alt} loading="lazy" />
                         </span>
                       </a>
                     </>
@@ -123,21 +115,12 @@ export default function ContactForm(block) {
                         </div>
                       </>
                     )}
-                    <input
-                      type="text"
-                      name="_gotcha"
-                      style={{ display: "none" }}
-                    />
+                    <input type="text" name="_gotcha" style={{ display: 'none' }} />
 
                     {block.form.submit_button && (
                       <div className="col-12">
-                        <button
-                          type="submit"
-                          className="btn btn-primary btn-lg mt-7"
-                        >
-                          <span className="position-relative">
-                            {block.form.submit_button.text}
-                          </span>
+                        <button type="submit" className="btn btn-primary btn-lg mt-7">
+                          <span className="position-relative">{block.form.submit_button.text}</span>
                         </button>
                       </div>
                     )}

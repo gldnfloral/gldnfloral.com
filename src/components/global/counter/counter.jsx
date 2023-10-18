@@ -1,12 +1,10 @@
-import MarkdownIt from "markdown-it";
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function GlobalCounter(block) {
   return (
     <section
-      className={`counter-up ${
-        block.alternate_style ? "counter-up-two pb-xxl-14 pb-lg-13" : ""
-      }`}
+      className={`counter-up ${block.alternate_style ? 'counter-up-two pb-xxl-14 pb-lg-13' : ''}`}
       id="counter-up"
     >
       <div className="container">
@@ -29,15 +27,11 @@ export default function GlobalCounter(block) {
                 <div className="counter-up-content" key={i}>
                   <div className="counter-up-content-item">
                     <div className="counter-percent">
-                      {number.prefix && (
-                        <span className="percent">{number.prefix}</span>
-                      )}
+                      {number.prefix && <span className="percent">{number.prefix}</span>}
 
                       <span className="counter">{number.number}</span>
 
-                      {number.suffix && (
-                        <span className="percent">{number.suffix}</span>
-                      )}
+                      {number.suffix && <span className="percent">{number.suffix}</span>}
                     </div>
                     <p>{number.text}</p>
                   </div>

@@ -4,8 +4,8 @@ spec:
     - content_blocks
   label: About Hero
   description: About Hero section
-  icon: "apps"
-  tags: ["hero"]
+  icon: 'apps'
+  tags: ['hero']
 
 # Defines the structure of this component, as well as the default values
 blueprint:
@@ -22,8 +22,8 @@ blueprint:
       image_alt: Staff group photo
       placement: back_top_left
   button:
-    text: "See more"
-    link: "#counter-up"
+    text: 'See more'
+    link: '#counter-up'
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

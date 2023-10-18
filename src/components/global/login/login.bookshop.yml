@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: Login
   description: Login section
-  icon: "login"
+  icon: 'login'
   tags: []
 
 # Defines the structure of this component, as well as the default values
@@ -18,10 +18,10 @@ blueprint:
     placeholder: Your Email
   checkbox_text: Remember Me
   log_in_button:
-    text: "Log In"
+    text: 'Log In'
   sign_up_button:
-    link: "/signup"
-    text: "Create an Account"
+    link: '/signup'
+    text: 'Create an Account'
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

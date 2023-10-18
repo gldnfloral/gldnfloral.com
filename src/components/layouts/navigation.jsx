@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import navigation from "@data/navigation.json";
+import { useEffect, useState } from 'react';
+import navigation from '@data/navigation.json';
 
 export default function Navigation({ pageUrl }) {
   const [isSticky, setSticky] = useState(false);
@@ -9,15 +9,15 @@ export default function Navigation({ pageUrl }) {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   const handleClick = (event) => {
-    const navbar = $("#mainnavigationBar");
-    navbar.toggleClass("bg-nav");
+    const navbar = $('#mainnavigationBar');
+    navbar.toggleClass('bg-nav');
   };
 
   const handleDropdownClick = (e) => {
@@ -25,18 +25,16 @@ export default function Navigation({ pageUrl }) {
 
     e.preventDefault();
 
-    const parentDropdown = e.target.closest(".dropdown");
+    const parentDropdown = e.target.closest('.dropdown');
     if (!parentDropdown) return;
 
-    const wasOpen = parentDropdown.classList.contains("show");
+    const wasOpen = parentDropdown.classList.contains('show');
 
-    document
-      .querySelectorAll(".dropdown.show, .dropdown-menu.show")
-      .forEach((el) => el.classList.remove("show"));
+    document.querySelectorAll('.dropdown.show, .dropdown-menu.show').forEach((el) => el.classList.remove('show'));
 
     if (!wasOpen) {
-      parentDropdown.classList.add("show");
-      parentDropdown.querySelector(".dropdown-menu").classList.add("show");
+      parentDropdown.classList.add('show');
+      parentDropdown.querySelector('.dropdown-menu').classList.add('show');
     }
   };
 
@@ -44,9 +42,7 @@ export default function Navigation({ pageUrl }) {
     <>
       <header>
         <nav
-          className={`navbar navbar-expand-lg position-fixed w-100 zindex-dropdown${
-            isSticky ? " sticky-nav" : ""
-          }`}
+          className={`navbar navbar-expand-lg position-fixed w-100 zindex-dropdown${isSticky ? ' sticky-nav' : ''}`}
           id="mainnavigationBar"
         >
           <div className="container-fluid">
@@ -64,13 +60,7 @@ export default function Navigation({ pageUrl }) {
               onClick={handleClick}
             >
               <span className="navbar-toggler-default">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <line
                     x1="3.5"
                     y1="5.5"
@@ -104,13 +94,7 @@ export default function Navigation({ pageUrl }) {
                 </svg>
               </span>
               <span className="navbar-toggler-toggled">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 28 28"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="20" height="20" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M21.5 6.5L6.5 21.5"
                     stroke="#404152"
@@ -128,25 +112,15 @@ export default function Navigation({ pageUrl }) {
                 </svg>
               </span>
             </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mx-auto mb-20 mb-lg-0">
                 {navigation.items.map((item, i) => (
-                  <li
-                    key={i}
-                    className={`nav-item ${
-                      item.enable_dropdown && item.dropdown ? "dropdown" : ""
-                    }`}
-                  >
+                  <li key={i} className={`nav-item ${item.enable_dropdown && item.dropdown ? 'dropdown' : ''}`}>
                     {item.enable_dropdown && item.dropdown ? (
                       <>
                         <a
                           href={`${item.link}`}
-                          className={`nav-link dropdown-link ${
-                            pageUrl?.pathname === item.link ? "active" : ""
-                          }`}
+                          className={`nav-link dropdown-link ${pageUrl?.pathname === item.link ? 'active' : ''}`}
                           onClick={handleDropdownClick}
                         >
                           {item.text}
@@ -154,10 +128,7 @@ export default function Navigation({ pageUrl }) {
                         <ul className="dropdown-menu">
                           {item.dropdown.map((dropdown_item, j) => (
                             <li key={j}>
-                              <a
-                                className="dropdown-item"
-                                href={dropdown_item.dropdown_link}
-                              >
+                              <a className="dropdown-item" href={dropdown_item.dropdown_link}>
                                 {dropdown_item.dropdown_text}
                               </a>
                             </li>
@@ -167,9 +138,7 @@ export default function Navigation({ pageUrl }) {
                     ) : (
                       <a
                         href={`${item.link}`}
-                        className={`nav-link ${
-                          pageUrl?.pathname === item.link ? "active" : ""
-                        }`}
+                        className={`nav-link ${pageUrl?.pathname === item.link ? 'active' : ''}`}
                       >
                         {item.text}
                       </a>
@@ -182,10 +151,7 @@ export default function Navigation({ pageUrl }) {
               <>
                 <div className="d-none d-lg-block">
                   <div className="nav-item">
-                    <a
-                      href={`${navigation.nav_btn?.link}`}
-                      className="btn btn-sm btn-links"
-                    >
+                    <a href={`${navigation.nav_btn?.link}`} className="btn btn-sm btn-links">
                       {navigation.nav_btn?.text}
                     </a>
                   </div>

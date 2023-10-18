@@ -1,4 +1,4 @@
-import MarkdownIt from "markdown-it";
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function GlobalHeader(block) {
@@ -7,11 +7,7 @@ export default function GlobalHeader(block) {
       <div className="container">
         <div className="row">
           <div className="col-lg-8 mx-auto">
-            <div
-              className={`section-header @@disply ${
-                block.remove_top_padding ? "no-top-pad" : ""
-              }`}
-            >
+            <div className={`section-header @@disply ${block.remove_top_padding ? 'no-top-pad' : ''}`}>
               <h2>
                 {block.title}
                 <span>{block.title_suffix}</span>

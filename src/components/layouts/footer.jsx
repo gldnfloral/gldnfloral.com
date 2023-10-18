@@ -1,4 +1,4 @@
-import footer from "@data/footer.json";
+import footer from '@data/footer.json';
 
 export default function Footer({}) {
   return (
@@ -12,8 +12,7 @@ export default function Footer({}) {
                   <img src={footer.logo} alt="logo" />
                 </a>
                 <p>
-                  © Copyright <span>{new Date().getFullYear()}</span>{" "}
-                  {footer.copyright}
+                  © Copyright <span>{new Date().getFullYear()}</span> {footer.copyright}
                 </p>
               </div>
               <div className="social-icon">
@@ -22,9 +21,7 @@ export default function Footer({}) {
                     <li key={i}>
                       <a href={`${link.link}`}>
                         <i className={link.icon} aria-hidden="true">
-                          <span className="visually-hidden">
-                            {link.icon_alt}
-                          </span>
+                          <span className="visually-hidden">{link.icon_alt}</span>
                         </i>
                       </a>
                     </li>

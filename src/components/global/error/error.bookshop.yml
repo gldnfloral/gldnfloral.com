@@ -3,14 +3,14 @@ spec:
   structures:
     - content_blocks
   label: Error
-  description: "404"
-  icon: "error"
+  description: '404'
+  icon: 'error'
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  description: "Something is wrong here!"
-  image: "/images/404/error.png"
+  description: 'Something is wrong here!'
+  image: '/images/404/error.png'
   image_alt: Error
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

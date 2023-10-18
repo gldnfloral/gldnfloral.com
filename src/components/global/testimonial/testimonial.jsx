@@ -1,4 +1,4 @@
-import MarkdownIt from "markdown-it";
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function GlobalTestimonial(block) {
@@ -34,12 +34,7 @@ function Testimonial({ slide, i }) {
       <div className="testimonial-item">
         <div className="testimonial-item-person">
           <div className="thumb">
-            <img
-              src={slide.image}
-              alt="logo"
-              className={slide.image_alt}
-              loading="lazy"
-            />
+            <img src={slide.image} alt="logo" className={slide.image_alt} loading="lazy" />
           </div>
           <div className="content">
             <h3>{slide.author}</h3>

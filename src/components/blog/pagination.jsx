@@ -1,5 +1,5 @@
-import PostSummary from "../../components/posts/summary";
-import MarkdownIt from "markdown-it";
+import PostSummary from '../../components/posts/summary';
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function BlogPagination({ pagination }) {
@@ -18,14 +18,12 @@ export default function BlogPagination({ pagination }) {
     pageLinks.push(
       <li className="page-item" key={i}>
         <a
-          className={`page-link btn btn-secondary ${
-            i === currentPage ? "active" : ""
-          }`}
-          href={i === 1 ? "/blog" : `/blog/${i}`}
+          className={`page-link btn btn-secondary ${i === currentPage ? 'active' : ''}`}
+          href={i === 1 ? '/blog' : `/blog/${i}`}
         >
           {i}
         </a>
-      </li>,
+      </li>
     );
   }
 
@@ -41,7 +39,7 @@ export default function BlogPagination({ pagination }) {
                   width="20.657"
                   height="11.314"
                   viewBox="0 0 20.657 11.314"
-                  style={{ transform: "scale(-1, 1)" }}
+                  style={{ transform: 'scale(-1, 1)' }}
                 >
                   <g fill="#fff" data-name="Group 12">
                     <path d="M0 4.657h18v2H0z" data-name="Rectangle 2400" />
@@ -62,12 +60,7 @@ export default function BlogPagination({ pagination }) {
           {next && (
             <li className="page-item">
               <a className="page-link btn btn-secondary" href={next}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20.657"
-                  height="11.314"
-                  viewBox="0 0 20.657 11.314"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20.657" height="11.314" viewBox="0 0 20.657 11.314">
                   <g fill="#fff" data-name="Group 12">
                     <path d="M0 4.657h18v2H0z" data-name="Rectangle 2400" />
                     <path

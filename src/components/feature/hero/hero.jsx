@@ -1,4 +1,4 @@
-import MarkdownIt from "markdown-it";
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function FeatureHero(block) {
@@ -16,12 +16,9 @@ export default function FeatureHero(block) {
               />
               <div className="d-block mb-6">
                 {block.button && (
-                  <a
-                    href={block.button.link}
-                    className="btn btn-primary btn-lg"
-                  >
-                    {" "}
-                    {block.button.text}{" "}
+                  <a href={block.button.link} className="btn btn-primary btn-lg">
+                    {' '}
+                    {block.button.text}{' '}
                   </a>
                 )}
               </div>
@@ -31,11 +28,7 @@ export default function FeatureHero(block) {
             <div className="feature-hero-banner">
               <img src={block.image} alt={block.image_alt} loading="lazy" />
               <div className="shape">
-                <img
-                  src="/images/feature/effect-4.png"
-                  alt="shape"
-                  loading="lazy"
-                />
+                <img src="/images/feature/effect-4.png" alt="shape" loading="lazy" />
               </div>
             </div>
           </div>

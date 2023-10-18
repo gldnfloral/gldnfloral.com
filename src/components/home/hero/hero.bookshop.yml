@@ -4,8 +4,8 @@ spec:
     - content_blocks
   label: Home Hero
   description: Home Hero section
-  icon: "cottage"
-  tags: ["hero"]
+  icon: 'cottage'
+  tags: ['hero']
 
 # Defines the structure of this component, as well as the default values
 blueprint:

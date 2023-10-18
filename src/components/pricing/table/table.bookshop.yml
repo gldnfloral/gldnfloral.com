@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: Pricing Table
   description: Pricing table section
-  icon: "table_rows"
+  icon: 'table_rows'
   tags: []
 
 # Defines the structure of this component, as well as the default values

@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: FAQ
   description: FAQ section
-  icon: "checklist"
+  icon: 'checklist'
   tags: []
 
 # Defines the structure of this component, as well as the default values

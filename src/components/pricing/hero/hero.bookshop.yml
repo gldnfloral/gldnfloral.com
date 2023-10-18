@@ -4,8 +4,8 @@ spec:
     - content_blocks
   label: Pricing Hero
   description: Pricing Hero section
-  icon: "credit_card"
-  tags: ["hero"]
+  icon: 'credit_card'
+  tags: ['hero']
 
 # Defines the structure of this component, as well as the default values
 blueprint:

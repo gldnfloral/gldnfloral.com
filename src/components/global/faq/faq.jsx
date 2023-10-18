@@ -1,5 +1,5 @@
-import FaqItem from "./faqItem";
-import MarkdownIt from "markdown-it";
+import FaqItem from './faqItem';
+import MarkdownIt from 'markdown-it';
 const md = new MarkdownIt({ html: true });
 
 export default function GlobalFaq(block) {

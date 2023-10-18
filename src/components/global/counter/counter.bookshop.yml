@@ -4,20 +4,20 @@ spec:
     - content_blocks
   label: Counter
   description: Counter section
-  icon: "functions"
+  icon: 'functions'
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  title: "Design for your"
-  title_suffix: "Business"
+  title: 'Design for your'
+  title_suffix: 'Business'
   description: We believe that a good email marketing strategy is the key to growth. So we’re helping you grow your business with tools and resources that make email marketing easy.
   alternate_style: false
   numbers:
-    - prefix: "$"
+    - prefix: '$'
       number: 300
-      suffix: "m"
-      text: "Venture capital raised"
+      suffix: 'm'
+      text: 'Venture capital raised'
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

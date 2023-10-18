@@ -127,7 +127,7 @@
     }
     &-link {
       &:after {
-        content: "\f107";
+        content: '\f107';
         font-family: FontAwesome;
         font-size: 1.4rem;
         font-style: normal;
@@ -306,21 +306,21 @@
   }
 }
 
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-default {
+.navbar-toggler[aria-expanded='true'] .navbar-toggler-default {
   display: none;
 }
 .navbar-toggler .navbar-toggler-default {
   display: -ms-flexbox;
   display: flex;
 }
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-toggled {
+.navbar-toggler[aria-expanded='true'] .navbar-toggler-toggled {
   display: -ms-flexbox;
   display: flex;
 }
 .navbar-toggler .navbar-toggler-toggled {
   display: none;
 }
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-toggled {
+.navbar-toggler[aria-expanded='true'] .navbar-toggler-toggled {
   display: flex;
   position: absolute;
   bottom: 0;

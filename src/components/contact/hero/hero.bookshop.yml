@@ -4,8 +4,8 @@ spec:
     - content_blocks
   label: Contact Hero
   description: Contact Hero section
-  icon: "contact_support"
-  tags: ["hero"]
+  icon: 'contact_support'
+  tags: ['hero']
 
 # Defines the structure of this component, as well as the default values
 blueprint:
