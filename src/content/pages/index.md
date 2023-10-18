@@ -11,10 +11,9 @@ seo:
   no_index: false
 content_blocks:
   - _bookshop_name: home/hero
-    title: Beautiful email campaigns
+    title: gldnfloral
     description: >-
-      With Sendit, you can quickly create beautiful rich emails that capture a
-      reader's attention, engage them, and convert them into customers.
+      Golden Floral is a full service florist in Colorado - specializing in weddings, events, and everyday floral arrangements. Feels like sweet summer mornings.
     image: /images/hero/hero-image-2.png
     image_alt: Reports dashboard
     button:

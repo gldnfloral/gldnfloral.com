@@ -8,14 +8,14 @@
       "dropdown": []
     },
     {
-      "text": "Features",
-      "link": "/features/",
+      "text": "Gallery",
+      "link": "/Gallery/",
       "enable_dropdown": false,
       "dropdown": []
     },
     {
-      "text": "Pricing",
-      "link": "/pricing/",
+      "text": "Services",
+      "link": "/services/",
       "enable_dropdown": false,
       "dropdown": []
     },
@@ -28,7 +28,7 @@
     {
       "text": "Blog",
       "link": "/blog/",
-      "enable_dropdown": true,
+      "enable_dropdown": false,
       "dropdown": [
         {
           "dropdown_text": "All Articles",
@@ -53,7 +53,7 @@
   ],
   "enable_nav_btn": true,
   "nav_btn": {
-    "text": "Get Started",
-    "link": "/signup/"
+    "text": "Contact",
+    "link": "/contact/"
   }
 }
