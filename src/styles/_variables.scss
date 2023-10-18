@@ -28,10 +28,10 @@ $color-secondary: #4d5d53;
 $color-secondary-light: mix($color-primary, $color-white, 16%);
 $color-secondary-dark: #f7f8fa;
 //overwritten by site.json -> theme -> anchor_color if set
-$color-anchor: #E3B936;
+$color-anchor: #e3b936;
 $color-anchor-dark: mix($color-anchor, $color-white, 30%);
 //overwritten by site.json -> theme -> background_effects_color if set
-$color-background-effects: #4D5D53;
+$color-background-effects: #4d5d53;
 
 $color-header: #000;
 $color-header-light: mix($color-anchor, $color-white, 4%);
