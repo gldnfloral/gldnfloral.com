@@ -27,7 +27,7 @@
     "@bookshop/astro-engine": "3.8.1",
     "@bookshop/generate": "3.8.1",
     "@makotot/ghostui": "^2.0.0",
-    "@types/react": "^18.2.28",
+    "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.13",
     "astro": "^3.3.1",
     "astro-compress": "^2.0.15",
