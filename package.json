@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@astrojs/rss": "^1.0.3",
-    "@types/luxon": "^3.3.2",
+    "@types/luxon": "^3.3.5",
     "astro-seo": "^0.8.0",
     "markdown-it": "^13.0.2",
     "prettier": "^3.0.3",
