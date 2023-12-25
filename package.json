@@ -23,7 +23,7 @@
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/react": "^3.0.3",
     "@astrojs/sitemap": "^3.0.2",
-    "@bookshop/astro-bookshop": "3.8.1",
+    "@bookshop/astro-bookshop": "3.9.0",
     "@bookshop/astro-engine": "3.8.1",
     "@bookshop/generate": "3.8.1",
     "@makotot/ghostui": "^2.0.0",
