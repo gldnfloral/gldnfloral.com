@@ -22,7 +22,7 @@
   "dependencies": {
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/react": "^3.0.3",
-    "@astrojs/sitemap": "^3.0.2",
+    "@astrojs/sitemap": "^3.0.4",
     "@bookshop/astro-bookshop": "3.8.1",
     "@bookshop/astro-engine": "3.8.1",
     "@bookshop/generate": "3.8.1",
