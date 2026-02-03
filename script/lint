@@ -12,4 +12,4 @@ if [ ! -d "node_modules" ]; then
   exit 1
 fi
 
-./node_modules/.bin/astro check
+./node_modules/.bin/tsc --noEmit
