@@ -9,3 +9,5 @@ Dead simple Astro (TypeScript) starter.
 - `npm run preview`
 - `npm run lint`
 - `npm run test`
+
+Tests are powered by Vitest and live in `test/`.

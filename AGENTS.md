@@ -16,6 +16,7 @@
 - Pages live in `src/pages`
 - Static assets in `public`
 - CI helper scripts live in `script/` (`build`, `lint`, `test`, `server`)
+- Tests live in `test/` and run with Vitest.
 
 ## Conventions
 - Keep dependencies minimal.

@@ -12,4 +12,4 @@ if [ ! -d "node_modules" ]; then
   exit 1
 fi
 
-echo "No tests configured yet. Add tests and update script/test."
+./node_modules/.bin/vitest run
