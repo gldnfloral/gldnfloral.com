@@ -13,6 +13,7 @@ permissions:
   checks: read
   pages: write
   id-token: write
+  actions: read
 
 # set an environment variable for use in all the jobs pointing the site_url
 env:
@@ -40,7 +41,7 @@ jobs:
 
     steps:
       # execute the branch-deploy action
-      - uses: github/branch-deploy@v8.1.0
+      - uses: github/branch-deploy@v11
         id: branch-deploy
         with:
           trigger: ".deploy"
@@ -50,7 +51,7 @@ jobs:
           skip_completing: "true" # we will complete the deployment manually in the 'result' job
           admins: "GrantBirki" # <--- add your GitHub username here (if you want to use the admins feature)
 
-  # build the github-pages site with hugo
+  # build the github-pages site with astro
   build:
     needs: trigger
     if: ${{ needs.trigger.outputs.continue == 'true' }} # only run if the trigger job set continue to true
@@ -58,12 +59,12 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ needs.trigger.outputs.ref }}
 
       - name: build with astro
-        uses: withastro/action@e3193ac80e18917ceaeb9f2d47019ad3b2c0416a # pin@v0.3.0
+        uses: withastro/action@v5.1.0
 
   # deploy to GitHub Pages
   deploy:
@@ -75,7 +76,7 @@ jobs:
       # deploy the site to GitHub Pages
       - name: deploy
         id: deployment
-        uses: actions/deploy-pages@9dbe3824824f8a1377b8e298bafde1a50ede43e5 # pin@v2.0.4
+        uses: actions/deploy-pages@v4
 
   # update the deployment result - manually complete the deployment that was created by the branch-deploy action
   result:
@@ -134,7 +135,7 @@ jobs:
       # if the deployment was successful, add a 'rocket' reaction to the comment that triggered the deployment
       - name: rocket reaction
         if: ${{ steps.deploy-status.outputs.DEPLOY_STATUS != 'failure' }}
-        uses: GrantBirki/comment@v2.0.7
+        uses: GrantBirki/comment@v2.1.1
         with:
           comment-id: ${{ needs.trigger.outputs.comment_id }}
           reactions: rocket
@@ -142,7 +143,7 @@ jobs:
       # if the deployment failed, add a '-1' (thumbs down) reaction to the comment that triggered the deployment
       - name: failure reaction
         if: ${{ steps.deploy-status.outputs.DEPLOY_STATUS == 'failure' }}
-        uses: GrantBirki/comment@v2.0.7
+        uses: GrantBirki/comment@v2.1.1
         with:
           comment-id: ${{ needs.trigger.outputs.comment_id }}
           reactions: "-1"
@@ -150,7 +151,7 @@ jobs:
       # if the deployment was successful, add a 'success' comment
       - name: success comment
         if: ${{ steps.deploy-status.outputs.DEPLOY_STATUS != 'failure' }}
-        uses: peter-evans/create-or-update-comment@c6c9a1a66007646a28c153e2a8580a5bad27bcfa # pin@v3.0.2
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # pin@v4.0.0
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
@@ -163,7 +164,7 @@ jobs:
       # if the deployment was not successful, add a 'failure' comment
       - name: failure comment
         if: ${{ steps.deploy-status.outputs.DEPLOY_STATUS == 'failure' }}
-        uses: peter-evans/create-or-update-comment@c6c9a1a66007646a28c153e2a8580a5bad27bcfa # pin@v3.0.2
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # pin@v4.0.0
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |

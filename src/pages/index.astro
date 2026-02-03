@@ -1,0 +1,95 @@
+---
+const title = "Astro Starter";
+const subtitle = "Dead simple, TypeScript-ready.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Georgia", "Times New Roman", serif;
+        line-height: 1.5;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f7f4ef;
+        color: #1f1b16;
+      }
+
+      main {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 4rem 1.5rem;
+      }
+
+      .card {
+        max-width: 640px;
+        background: #ffffff;
+        border: 1px solid #e2ddd6;
+        border-radius: 16px;
+        padding: 2.5rem 2.75rem;
+        box-shadow: 0 10px 30px rgba(31, 27, 22, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 0.75rem;
+        font-size: clamp(2rem, 3vw, 2.75rem);
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        margin: 0 0 1rem;
+        font-size: 1.1rem;
+      }
+
+      code {
+        background: #f0ebe4;
+        padding: 0.15rem 0.35rem;
+        border-radius: 6px;
+        font-size: 0.95rem;
+      }
+
+      .links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+
+      a {
+        color: #1f1b16;
+        text-decoration: none;
+        border-bottom: 1px solid #1f1b16;
+        padding-bottom: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="card">
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+        <p>
+          Edit <code>src/pages/index.astro</code> to get started. Run
+          <code>npm run dev</code> to preview locally.
+        </p>
+        <div class="links">
+          <a href="https://docs.astro.build" target="_blank" rel="noreferrer">
+            Astro Docs
+          </a>
+          <a href="https://astro.build" target="_blank" rel="noreferrer">
+            Astro Site
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

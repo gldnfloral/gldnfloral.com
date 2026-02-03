@@ -1,5 +1,11 @@
-# gldnfloral.com 🌻
+# gldnfloral.com
 
-[![deploy](https://github.com/gldnfloral/gldnfloral.com/actions/workflows/deploy.yml/badge.svg)](https://github.com/gldnfloral/gldnfloral.com/actions/workflows/deploy.yml) [![ci](https://github.com/gldnfloral/gldnfloral.com/actions/workflows/ci.yml/badge.svg)](https://github.com/gldnfloral/gldnfloral.com/actions/workflows/ci.yml) [![lint](https://github.com/gldnfloral/gldnfloral.com/actions/workflows/lint.yml/badge.svg)](https://github.com/gldnfloral/gldnfloral.com/actions/workflows/lint.yml) [![json-yaml-validate](https://github.com/gldnfloral/gldnfloral.com/actions/workflows/json-yaml-validate.yml/badge.svg)](https://github.com/gldnfloral/gldnfloral.com/actions/workflows/json-yaml-validate.yml)
+Dead simple Astro (TypeScript) starter.
 
-The website for [gldnfloral.com](https://gldnfloral.com)
+## Commands
+
+- `npm run dev`
+- `npm run build`
+- `npm run preview`
+- `npm run lint`
+- `npm run test`
