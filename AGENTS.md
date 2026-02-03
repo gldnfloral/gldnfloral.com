@@ -21,3 +21,6 @@
 - Keep dependencies minimal.
 - Prefer plain Astro + TS; add libraries only when clearly needed.
 - Favor small, readable components.
+
+## Completion Checklist
+- Run `npm run lint`, `npm run test`, and `npm run build` before finishing edits.
