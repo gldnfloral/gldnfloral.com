@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+
+import type { GalleryEntry } from "../lib/gallery";
+
+interface Props {
+  items: readonly GalleryEntry[];
+  showCaptions?: boolean;
+}
+
+const { items, showCaptions = true } = Astro.props;
+---
+
+<div class="gallery-grid">
+  {
+    items.map((item) => (
+      <figure class="gallery-item">
+        <Image
+          src={item.image}
+          alt={item.alt}
+          class="gallery-image"
+          widths={[480, 720, 960]}
+          sizes="(max-width: 48rem) 100vw, (max-width: 72rem) 50vw, 33vw"
+          loading="lazy"
+          decoding="async"
+        />
+        {
+          showCaptions && (
+            <figcaption>
+              <h3>{item.title}</h3>
+            </figcaption>
+          )
+        }
+      </figure>
+    ))
+  }
+</div>
+
+<style>
+  .gallery-grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .gallery-item {
+    margin: 0;
+  }
+
+  .gallery-image {
+    aspect-ratio: 4 / 5;
+    border-radius: 0.5rem;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  figcaption {
+    padding-top: var(--space-3);
+  }
+
+  h3 {
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+    font-weight: 500;
+    margin: 0;
+  }
+</style>

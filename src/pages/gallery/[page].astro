@@ -1,0 +1,52 @@
+---
+import type { GetStaticPaths } from "astro";
+
+import GalleryGrid from "../../components/GalleryGrid.astro";
+import GalleryPagination from "../../components/GalleryPagination.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getGalleryEntriesForPage,
+  getGalleryPageNumbers,
+  getGalleryTotalPages
+} from "../../lib/gallery";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const pageNumbers = getGalleryPageNumbers().filter((pageNumber) => pageNumber > 1);
+
+  return pageNumbers.map((pageNumber) => ({
+    params: {
+      page: pageNumber.toString()
+    }
+  }));
+};
+
+const pageParam = Astro.params.page;
+const currentPage = Number.parseInt(pageParam ?? "1", 10);
+const totalPages = getGalleryTotalPages();
+const galleryItems = getGalleryEntriesForPage(currentPage);
+---
+
+<BaseLayout
+  title={`Gallery - Page ${currentPage}`}
+  description={`Browse page ${currentPage} of the GLDN Floral gallery.`}
+  path={Astro.url.pathname}
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Gallery</p>
+      <h1 class="page-title">Floral Portfolio</h1>
+      <p class="page-intro">Page {currentPage} of {totalPages}</p>
+
+      <div class="gallery-content">
+        <GalleryGrid items={galleryItems} />
+        <GalleryPagination currentPage={currentPage} totalPages={totalPages} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gallery-content {
+    margin-top: var(--space-6);
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import GalleryGrid from "../../components/GalleryGrid.astro";
+import GalleryPagination from "../../components/GalleryPagination.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getGalleryEntriesForPage,
+  getGalleryTotalPages
+} from "../../lib/gallery";
+
+const currentPage = 1;
+const totalPages = getGalleryTotalPages();
+const galleryItems = getGalleryEntriesForPage(currentPage);
+---
+
+<BaseLayout
+  title="Gallery"
+  description="Browse the GLDN Floral gallery of seasonal floral arrangements and event-ready designs."
+  path={Astro.url.pathname}
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Gallery</p>
+      <h1 class="page-title">Floral Portfolio</h1>
+      <p class="page-intro">
+        A curated collection of recent arrangements, designed with seasonal stems and soft, natural texture.
+      </p>
+
+      <div class="gallery-content">
+        <GalleryGrid items={galleryItems} />
+        <GalleryPagination currentPage={currentPage} totalPages={totalPages} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gallery-content {
+    margin-top: var(--space-6);
+  }
+</style>

@@ -1,0 +1,116 @@
+---
+import { Image } from "astro:assets";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  galleryEntries,
+  getGalleryEntriesForPage
+} from "../lib/gallery";
+
+const [portraitLikeImage] = galleryEntries;
+const supportingImages = getGalleryEntriesForPage(2).slice(0, 2);
+---
+
+<BaseLayout
+  title="About"
+  description="Learn about GLDN Floral, a floral studio focused on seasonal arrangements and artful composition."
+  path={Astro.url.pathname}
+>
+  <section class="section">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <p class="eyebrow">About</p>
+        <h1 class="page-title">Flowers with Warmth, Structure, and Story</h1>
+        <p>
+          GLDN Floral is built around seasonal flowers, intentional color palettes, and natural movement.
+          Every arrangement is designed to feel layered yet effortless, with attention to texture, line,
+          and proportion.
+        </p>
+        <p>
+          Inspired by California light and garden-grown stems, the studio approach blends romantic softness
+          with a modern, editorial finish for events, gifting, and home styling.
+        </p>
+      </div>
+      <figure class="lead-image">
+        <Image
+          src={portraitLikeImage.image}
+          alt={portraitLikeImage.alt}
+          widths={[520, 760, 980]}
+          sizes="(max-width: 64rem) 100vw, 46vw"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section supporting-section">
+    <div class="container supporting-grid">
+      {
+        supportingImages.map((item) => (
+          <figure>
+            <Image
+              src={item.image}
+              alt={item.alt}
+              widths={[420, 680, 920]}
+              sizes="(max-width: 48rem) 100vw, 48vw"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-grid {
+    align-items: start;
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .about-copy {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 62ch;
+  }
+
+  .lead-image,
+  .supporting-grid figure {
+    margin: 0;
+  }
+
+  .lead-image :global(img),
+  .supporting-grid :global(img) {
+    border-radius: 0.5rem;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .supporting-section {
+    padding-top: 0;
+  }
+
+  .supporting-grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 64rem) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .supporting-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

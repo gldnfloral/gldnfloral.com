@@ -1,0 +1,132 @@
+---
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navItems: readonly NavItem[] = [
+  { href: "/", label: "Home" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" }
+];
+
+const normalizePath = (value: string): string => {
+  const cleaned = value.replace(/\/+$/, "");
+  return cleaned === "" ? "/" : cleaned;
+};
+
+const normalizedCurrentPath = normalizePath(currentPath);
+
+const isActive = (href: string): boolean => {
+  const normalizedHref = normalizePath(href);
+
+  if (normalizedHref === "/gallery") {
+    return (
+      normalizedCurrentPath === "/gallery" ||
+      normalizedCurrentPath.startsWith("/gallery/")
+    );
+  }
+
+  return normalizedCurrentPath === normalizedHref;
+};
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="GLDN Floral home">
+      gldn floral
+    </a>
+
+    <nav aria-label="Primary" class="site-nav">
+      <ul>
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--color-cornsilk);
+    border-bottom: 1px solid var(--color-border);
+    position: static;
+    z-index: auto;
+  }
+
+  .header-inner {
+    align-items: center;
+    display: flex;
+    gap: var(--space-4);
+    justify-content: space-between;
+    min-height: 4.5rem;
+  }
+
+  .brand {
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    line-height: 1;
+    text-decoration: none;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  .site-nav ul {
+    align-items: center;
+    display: flex;
+    gap: clamp(var(--space-3), 2vw, var(--space-6));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav a {
+    border-bottom: 1px solid transparent;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding-bottom: 0.15rem;
+    text-decoration: none;
+    transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  }
+
+  .site-nav a:hover {
+    color: var(--color-heading);
+  }
+
+  .site-nav a[aria-current="page"] {
+    border-bottom-color: var(--color-heading);
+    color: var(--color-heading);
+    font-weight: 600;
+  }
+
+  @media (max-width: 46rem) {
+    .header-inner {
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: var(--space-3);
+      padding-top: var(--space-3);
+    }
+
+    .site-nav ul {
+      flex-wrap: wrap;
+      gap: var(--space-3) var(--space-4);
+    }
+  }
+</style>

@@ -1,0 +1,109 @@
+---
+import { siteConfig } from "../lib/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; {year} {siteConfig.name}</p>
+
+    <ul class="social-links" aria-label="Social links">
+      {
+        siteConfig.socials.map((social) => (
+          <li>
+            <a href={social.href} target="_blank" rel="noreferrer" aria-label={social.label}>
+              {social.label === "Instagram" ? (
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17.5" cy="6.5" r="1.3"></circle>
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12.2 2c-3.9 0-6.1 2.8-6.1 5.8 0 1.6.6 3.1 1.9 3.7.2.1.4 0 .5-.2.1-.2.3-.8.3-1 .1-.2 0-.3-.1-.5-.4-.5-.7-1.1-.7-2 0-2.6 2-4.9 5.1-4.9 2.8 0 4.3 1.7 4.3 3.9 0 2.9-1.3 5.4-3.2 5.4-1.1 0-1.9-.9-1.6-2 .3-1.3.8-2.6.8-3.5 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.3 0 .8.3 1.4.3 1.4l-1.1 4.7c-.3 1.1 0 2.4 0 2.5 0 .1.1.2.2.1.1-.1 1.3-1.6 1.7-3.1.1-.4.6-2.2.6-2.2.3.6 1.3 1.1 2.3 1.1 3 0 5.1-2.8 5.1-6.5C19.6 4.6 16.8 2 12.2 2z"></path>
+                </svg>
+              )}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a href={`mailto:${siteConfig.email}`} aria-label="Email GLDN Floral">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+            <polyline points="3 7 12 13 21 7"></polyline>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-cornsilk);
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-9);
+    padding-block: var(--space-5);
+  }
+
+  .footer-inner {
+    align-items: center;
+    display: flex;
+    gap: var(--space-4);
+    justify-content: space-between;
+  }
+
+  .footer-copy {
+    margin: 0;
+  }
+
+  .social-links {
+    align-items: center;
+    display: flex;
+    gap: var(--space-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .social-links a {
+    align-items: center;
+    border: 1px solid var(--color-text);
+    border-radius: 999px;
+    color: var(--color-text);
+    display: inline-flex;
+    height: 2.2rem;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    width: 2.2rem;
+  }
+
+  .social-links a:hover {
+    background-color: var(--color-royal-gold);
+    color: var(--color-heading);
+  }
+
+  svg {
+    fill: none;
+    height: 1rem;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+    width: 1rem;
+  }
+
+  .social-links li:nth-child(2) svg {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  @media (max-width: 36rem) {
+    .footer-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { siteConfig } from "../lib/site";
+import "../styles/global.css";
+
+interface Props {
+  description?: string;
+  path: string;
+  title: string;
+}
+
+const { description = siteConfig.description, path, title } = Astro.props;
+const fullTitle = `${title} | ${siteConfig.title}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap"
+    />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <SiteHeader currentPath={path} />
+    <main id="main-content" class="site-main">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

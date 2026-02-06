@@ -1,0 +1,105 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+}
+
+const { currentPage, totalPages } = Astro.props;
+
+const buildPageHref = (pageNumber: number): string =>
+  pageNumber === 1 ? "/gallery" : `/gallery/${pageNumber}`;
+
+const previousPage = currentPage > 1 ? currentPage - 1 : null;
+const nextPage = currentPage < totalPages ? currentPage + 1 : null;
+const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+---
+
+<nav class="pagination" aria-label="Gallery pagination">
+  <a
+    class={`pager-link ${previousPage ? "" : "is-disabled"}`}
+    href={previousPage ? buildPageHref(previousPage) : "#"}
+    aria-disabled={previousPage ? undefined : "true"}
+    tabindex={previousPage ? undefined : -1}
+  >
+    Previous
+  </a>
+
+  <ol>
+    {
+      pageNumbers.map((pageNumber) => (
+        <li>
+          <a
+            href={buildPageHref(pageNumber)}
+            aria-current={currentPage === pageNumber ? "page" : undefined}
+          >
+            {pageNumber}
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+
+  <a
+    class={`pager-link ${nextPage ? "" : "is-disabled"}`}
+    href={nextPage ? buildPageHref(nextPage) : "#"}
+    aria-disabled={nextPage ? undefined : "true"}
+    tabindex={nextPage ? undefined : -1}
+  >
+    Next
+  </a>
+</nav>
+
+<style>
+  .pagination {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-top: var(--space-7);
+  }
+
+  ol {
+    display: flex;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    align-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-text);
+    display: inline-flex;
+    font-size: 0.95rem;
+    justify-content: center;
+    min-height: 2.25rem;
+    min-width: 2.25rem;
+    padding-inline: var(--space-3);
+    text-decoration: none;
+  }
+
+  a:hover {
+    border-color: var(--color-heading);
+    color: var(--color-heading);
+  }
+
+  a[aria-current="page"] {
+    background: var(--color-sandy-brown);
+    border-color: var(--color-sandy-brown);
+    color: var(--color-off-white);
+    font-weight: 600;
+  }
+
+  .pager-link {
+    font-weight: 500;
+  }
+
+  .is-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+</style>

@@ -1,0 +1,131 @@
+---
+import { Image } from "astro:assets";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { galleryEntries } from "../lib/gallery";
+import { siteConfig } from "../lib/site";
+
+const [accentImage] = galleryEntries.slice(-1);
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact GLDN Floral for floral design inquiries, availability, and collaborations."
+  path={Astro.url.pathname}
+>
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-details">
+        <p class="eyebrow">Contact</p>
+        <h1 class="page-title">Let’s Plan Something Beautiful</h1>
+        <p class="page-intro">
+          Reach out for availability, collaborations, and floral design inquiries.
+        </p>
+
+        <dl>
+          <div>
+            <dt>Email</dt>
+            <dd>
+              <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+            </dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd>{siteConfig.location}</dd>
+          </div>
+          <div>
+            <dt>Social</dt>
+            <dd class="social-list">
+              {
+                siteConfig.socials.map((social) => (
+                  <a href={social.href} target="_blank" rel="noreferrer">
+                    {social.label}
+                  </a>
+                ))
+              }
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="accent-image">
+        <Image
+          src={accentImage.image}
+          alt={accentImage.alt}
+          widths={[520, 760, 980]}
+          sizes="(max-width: 64rem) 100vw, 44vw"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid {
+    align-items: start;
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-details {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  dl {
+    border-top: 1px solid var(--color-border);
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    padding-top: var(--space-4);
+  }
+
+  dt {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: var(--space-1) 0 0;
+  }
+
+  .social-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .social-list a {
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+  }
+
+  .social-list a:hover {
+    border-bottom-color: var(--color-heading);
+    color: var(--color-heading);
+  }
+
+  .accent-image {
+    margin: 0;
+  }
+
+  .accent-image :global(img) {
+    border-radius: 0.5rem;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  @media (max-width: 64rem) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
