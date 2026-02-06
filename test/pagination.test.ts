@@ -30,6 +30,10 @@ describe("pagination utilities", () => {
     expect(() => clampPage(1.5, 3)).toThrow("page must be an integer");
   });
 
+  it("throws for invalid total page counts", () => {
+    expect(() => clampPage(1, 0)).toThrow("totalPages must be at least 1");
+  });
+
   it("returns the correct slice for a page", () => {
     expect(paginate(["a", "b", "c", "d", "e"], 2, 2)).toEqual(["c", "d"]);
   });

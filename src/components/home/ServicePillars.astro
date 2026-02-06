@@ -28,7 +28,7 @@ const { items } = Astro.props;
             <ul>
               {item.notes.map((note) => <li>{note}</li>)}
             </ul>
-            <a href={item.href}>Learn More</a>
+            <a href={item.href} aria-label={`Learn more about ${item.label}`}>Learn More</a>
           </article>
         ))
       }

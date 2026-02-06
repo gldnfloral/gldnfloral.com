@@ -45,6 +45,7 @@ const { steps } = Astro.props;
   }
 
   .process-grid {
+    align-items: stretch;
     counter-reset: step;
     display: grid;
     gap: var(--space-4);
@@ -52,6 +53,17 @@ const { steps } = Astro.props;
     list-style: none;
     margin: 0;
     padding: 0;
+    position: relative;
+  }
+
+  .process-grid::before {
+    background: var(--color-border);
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 2.65rem;
   }
 
   li {
@@ -61,6 +73,8 @@ const { steps } = Astro.props;
     display: grid;
     gap: var(--space-3);
     padding: var(--space-4);
+    position: relative;
+    z-index: 1;
   }
 
   .step-index {
@@ -83,6 +97,10 @@ const { steps } = Astro.props;
   @media (max-width: 72rem) {
     .process-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .process-grid::before {
+      display: none;
     }
   }
 

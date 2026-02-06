@@ -15,14 +15,15 @@ const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 ---
 
 <nav class="pagination" aria-label="Gallery pagination">
-  <a
-    class={`pager-link ${previousPage ? "" : "is-disabled"}`}
-    href={previousPage ? buildPageHref(previousPage) : "#"}
-    aria-disabled={previousPage ? undefined : "true"}
-    tabindex={previousPage ? undefined : -1}
-  >
-    Previous
-  </a>
+  {
+    previousPage ? (
+      <a class="pager-link" href={buildPageHref(previousPage)}>
+        Previous
+      </a>
+    ) : (
+      <span class="pager-link is-disabled" aria-disabled="true">Previous</span>
+    )
+  }
 
   <ol>
     {
@@ -31,6 +32,7 @@ const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
           <a
             href={buildPageHref(pageNumber)}
             aria-current={currentPage === pageNumber ? "page" : undefined}
+            aria-label={`Go to gallery page ${pageNumber}`}
           >
             {pageNumber}
           </a>
@@ -39,14 +41,15 @@ const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
     }
   </ol>
 
-  <a
-    class={`pager-link ${nextPage ? "" : "is-disabled"}`}
-    href={nextPage ? buildPageHref(nextPage) : "#"}
-    aria-disabled={nextPage ? undefined : "true"}
-    tabindex={nextPage ? undefined : -1}
-  >
-    Next
-  </a>
+  {
+    nextPage ? (
+      <a class="pager-link" href={buildPageHref(nextPage)}>
+        Next
+      </a>
+    ) : (
+      <span class="pager-link is-disabled" aria-disabled="true">Next</span>
+    )
+  }
 </nav>
 
 <style>
@@ -67,7 +70,8 @@ const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
     padding: 0;
   }
 
-  a {
+  a,
+  span {
     align-items: center;
     border: 1px solid var(--color-border);
     border-radius: 999px;
@@ -89,7 +93,7 @@ const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
   a[aria-current="page"] {
     background: var(--color-sandy-brown);
     border-color: var(--color-sandy-brown);
-    color: var(--color-off-white);
+    color: var(--color-heading);
     font-weight: 600;
   }
 

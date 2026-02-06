@@ -1,41 +1,11 @@
 ---
-interface NavItem {
-  href: string;
-  label: string;
-}
+import { isNavItemActive, primaryNavItems } from "../lib/navigation";
 
 interface Props {
   currentPath: string;
 }
 
 const { currentPath } = Astro.props;
-
-const navItems: readonly NavItem[] = [
-  { href: "/", label: "Home" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" }
-];
-
-const normalizePath = (value: string): string => {
-  const cleaned = value.replace(/\/+$/, "");
-  return cleaned === "" ? "/" : cleaned;
-};
-
-const normalizedCurrentPath = normalizePath(currentPath);
-
-const isActive = (href: string): boolean => {
-  const normalizedHref = normalizePath(href);
-
-  if (normalizedHref === "/gallery") {
-    return (
-      normalizedCurrentPath === "/gallery" ||
-      normalizedCurrentPath.startsWith("/gallery/")
-    );
-  }
-
-  return normalizedCurrentPath === normalizedHref;
-};
 ---
 
 <header class="site-header">
@@ -47,9 +17,12 @@ const isActive = (href: string): boolean => {
     <nav aria-label="Primary" class="site-nav">
       <ul>
         {
-          navItems.map((item) => (
+          primaryNavItems.map((item) => (
             <li>
-              <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+              <a
+                href={item.href}
+                aria-current={isNavItemActive(currentPath, item.href) ? "page" : undefined}
+              >
                 {item.label}
               </a>
             </li>
@@ -96,21 +69,26 @@ const isActive = (href: string): boolean => {
   }
 
   .site-nav a {
-    border-bottom: 1px solid transparent;
+    border: 1px solid transparent;
+    border-radius: 999px;
     color: var(--color-text);
     font-family: var(--font-body);
     font-size: 1rem;
-    padding-bottom: 0.15rem;
+    padding: 0.35rem 0.65rem;
     text-decoration: none;
-    transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out;
   }
 
   .site-nav a:hover {
+    background: rgba(247, 226, 148, 0.22);
+    border-color: var(--color-border);
     color: var(--color-heading);
   }
 
   .site-nav a[aria-current="page"] {
+    background: rgba(247, 226, 148, 0.38);
     border-bottom-color: var(--color-heading);
+    border-color: var(--color-heading);
     color: var(--color-heading);
     font-weight: 600;
   }
