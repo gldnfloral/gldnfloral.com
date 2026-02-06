@@ -20,8 +20,7 @@ if (galleryEntries.length < 6) {
   throw new Error("Homepage expects at least six gallery images");
 }
 
-const heroPrimaryImage = galleryEntries[2];
-const heroSecondaryImage = galleryEntries[4];
+const heroImage = galleryEntries[2];
 const editorialItems = [galleryEntries[0], galleryEntries[3], galleryEntries[5]];
 const portfolioItems = galleryEntries;
 ---
@@ -31,10 +30,7 @@ const portfolioItems = galleryEntries;
   description="GLDN Floral creates refined floral design for weddings, events, and everyday spaces with seasonal stems and sculptural composition."
   path={Astro.url.pathname}
 >
-  <HomeHero
-    primaryImage={heroPrimaryImage}
-    secondaryImage={heroSecondaryImage}
-  />
+  <HomeHero heroImage={heroImage} />
 
   <ServicePillars items={servicePillars} />
   <StudioStats items={studioStats} />
@@ -51,7 +47,7 @@ const portfolioItems = galleryEntries;
           story pages.
         </p>
       </header>
-      <GalleryGrid items={portfolioItems} />
+      <GalleryGrid items={portfolioItems} showCaptions={false} />
       <p class="portfolio-link-wrap">
         <a class="portfolio-link" href="/gallery">View Paginated Gallery</a>
       </p>
@@ -84,11 +80,14 @@ const portfolioItems = galleryEntries;
 
   .portfolio-link-wrap {
     margin-top: var(--space-5);
+    position: relative;
+    z-index: 1;
   }
 
   .portfolio-link {
     border-bottom: 1px solid var(--color-heading);
     color: var(--color-heading);
+    display: inline-block;
     font-weight: 600;
     text-decoration: none;
   }

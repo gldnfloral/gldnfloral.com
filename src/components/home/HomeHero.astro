@@ -2,90 +2,80 @@
 import { Image } from "astro:assets";
 
 import type { GalleryEntry } from "../../lib/gallery";
+import { siteConfig } from "../../lib/site";
 
 interface Props {
-  primaryImage: GalleryEntry;
-  secondaryImage: GalleryEntry;
+  heroImage: GalleryEntry;
 }
 
-const { primaryImage, secondaryImage } = Astro.props;
+const { heroImage } = Astro.props;
 ---
 
 <section class="section hero-section">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Monterey Bay Floral Studio</p>
-      <h1 class="page-title">Floral Design with a Soft Editorial Point of View</h1>
-      <p class="page-intro">
-        GLDN Floral creates artful arrangements for weddings, events, and intimate gatherings using
-        seasonal stems, thoughtful color, and intentional form.
+      <p class="eyebrow">{siteConfig.location}</p>
+      <h1 class="hero-title">Flowers with Warmth, Structure, and Story</h1>
+      <p class="hero-intro">
+        GLDN Floral creates artful arrangements for weddings, events, and intimate gatherings with
+        seasonal stems, thoughtful color, and natural movement.
       </p>
 
       <div class="hero-actions" aria-label="Primary actions">
         <a class="hero-link hero-link-primary" href="/gallery">Browse Gallery</a>
         <a class="hero-link" href="/contact">Start an Inquiry</a>
       </div>
-
-      <dl class="hero-meta" aria-label="Studio highlights">
-        <div>
-          <dt>Now Booking</dt>
-          <dd>Spring + Summer 2026</dd>
-        </div>
-        <div>
-          <dt>Studio Focus</dt>
-          <dd>Weddings, Editorial, Hospitality</dd>
-        </div>
-      </dl>
     </div>
 
-    <div class="hero-media" aria-label="Featured floral work">
-      <figure class="hero-primary">
-        <Image
-          src={primaryImage.image}
-          alt={primaryImage.alt}
-          widths={[540, 760, 980]}
-          sizes="(max-width: 64rem) 100vw, 35vw"
-          loading="eager"
-          decoding="async"
-        />
-      </figure>
-      <figure class="hero-secondary">
-        <Image
-          src={secondaryImage.image}
-          alt={secondaryImage.alt}
-          widths={[420, 640, 860]}
-          sizes="(max-width: 64rem) 70vw, 24vw"
-          loading="eager"
-          decoding="async"
-        />
-      </figure>
-    </div>
+    <figure class="hero-image">
+      <Image
+        src={heroImage.image}
+        alt={heroImage.alt}
+        widths={[540, 760, 980]}
+        sizes="(max-width: 64rem) 100vw, 42vw"
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
   </div>
 </section>
 
 <style>
   .hero-section {
-    padding-bottom: var(--space-6);
-    padding-top: var(--space-8);
+    padding-bottom: var(--space-5);
+    padding-top: var(--space-7);
   }
 
   .hero-grid {
-    align-items: center;
+    align-items: start;
     display: grid;
     gap: var(--space-6);
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
   }
 
   .hero-copy {
     display: grid;
     gap: var(--space-4);
+    max-width: 62ch;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.06;
+    margin: 0;
+  }
+
+  .hero-intro {
+    color: var(--color-muted);
+    font-size: clamp(1.08rem, 2.1vw, 1.38rem);
+    max-width: 44ch;
   }
 
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
-    margin-top: var(--space-2);
+    margin-top: var(--space-1);
   }
 
   .hero-link {
@@ -114,58 +104,17 @@ const { primaryImage, secondaryImage } = Astro.props;
     border-color: #db863d;
   }
 
-  .hero-meta {
-    border-top: 1px solid var(--color-border);
-    display: grid;
-    gap: var(--space-4);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin: 0;
-    padding-top: var(--space-4);
-  }
-
-  .hero-meta dt {
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .hero-meta dd {
-    margin: var(--space-1) 0 0;
-  }
-
-  .hero-media {
-    min-height: 25rem;
-    position: relative;
-  }
-
-  .hero-primary,
-  .hero-secondary {
+  .hero-image {
     margin: 0;
   }
 
-  .hero-primary :global(img),
-  .hero-secondary :global(img) {
+  .hero-image :global(img) {
     border-radius: 0.5rem;
     display: block;
+    height: 100%;
+    max-height: 34rem;
     object-fit: cover;
     width: 100%;
-  }
-
-  .hero-primary {
-    margin-left: auto;
-    max-width: 29rem;
-    width: 82%;
-  }
-
-  .hero-secondary {
-    border: 0.45rem solid var(--color-off-white);
-    bottom: -1.5rem;
-    left: 0;
-    max-width: 17rem;
-    position: absolute;
-    width: 50%;
   }
 
   @media (max-width: 64rem) {
@@ -173,26 +122,8 @@ const { primaryImage, secondaryImage } = Astro.props;
       grid-template-columns: 1fr;
     }
 
-    .hero-media {
-      min-height: auto;
-      padding-bottom: var(--space-8);
-    }
-
-    .hero-primary {
-      margin-left: 0;
-      width: 100%;
-    }
-
-    .hero-secondary {
-      bottom: 0;
-      left: auto;
-      right: 1rem;
-    }
-  }
-
-  @media (max-width: 40rem) {
-    .hero-meta {
-      grid-template-columns: 1fr;
+    .hero-image :global(img) {
+      max-height: 28rem;
     }
   }
 </style>

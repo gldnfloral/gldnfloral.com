@@ -2,7 +2,7 @@ export const siteConfig = {
   description:
     "GLDN Floral is a floral design studio creating organic, seasonal arrangements for celebrations and everyday moments.",
   email: "hello@gldnfloral.com",
-  location: "Monterey Bay, California",
+  location: "San Francisco, California",
   name: "GLDN Floral",
   socials: [
     {
