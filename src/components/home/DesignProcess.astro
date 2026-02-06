@@ -1,0 +1,94 @@
+---
+import type { ProcessStep } from "../../lib/home";
+
+interface Props {
+  steps: readonly ProcessStep[];
+}
+
+const { steps } = Astro.props;
+---
+
+<section class="section process-section">
+  <div class="container">
+    <header class="process-header">
+      <p class="eyebrow">Process</p>
+      <h2>A Clear Path from Inquiry to Installation</h2>
+    </header>
+
+    <ol class="process-grid">
+      {
+        steps.map((step, index) => (
+          <li>
+            <p class="step-index">{(index + 1).toString().padStart(2, "0")}</p>
+            <h3>{step.title}</h3>
+            <p>{step.detail}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process-section {
+    padding-top: var(--space-5);
+  }
+
+  .process-header {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .process-header h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+  }
+
+  .process-grid {
+    counter-reset: step;
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  .step-index {
+    color: var(--color-sandy-brown);
+    font-family: var(--font-display);
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    line-height: 1.1;
+  }
+
+  li p:last-child {
+    color: var(--color-muted);
+    font-size: 1rem;
+  }
+
+  @media (max-width: 72rem) {
+    .process-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 44rem) {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,150 @@
+---
+import { Image } from "astro:assets";
+
+import type { GalleryEntry } from "../../lib/gallery";
+
+interface Props {
+  items: readonly GalleryEntry[];
+}
+
+const { items } = Astro.props;
+
+if (items.length < 3) {
+  throw new Error("EditorialShowcase requires at least 3 gallery items");
+}
+
+const [first, second, third] = items;
+---
+
+<section class="section editorial-section">
+  <div class="container editorial-grid">
+    <article class="editorial-copy">
+      <p class="eyebrow">Lookbook</p>
+      <h2>Seasonal Color Stories and Sculptural Shapes</h2>
+      <p>
+        This section is intentionally designed as a placeholder for future case studies, collection launches,
+        and venue-specific galleries.
+      </p>
+      <a href="/gallery">See the full portfolio</a>
+    </article>
+
+    <div class="editorial-mosaic" aria-label="Editorial floral image mosaic">
+      <figure class="panel-a">
+        <Image
+          src={first.image}
+          alt={first.alt}
+          widths={[420, 620, 860]}
+          sizes="(max-width: 72rem) 90vw, 24vw"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <figure class="panel-b">
+        <Image
+          src={second.image}
+          alt={second.alt}
+          widths={[420, 620, 860]}
+          sizes="(max-width: 72rem) 90vw, 24vw"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <figure class="panel-c">
+        <Image
+          src={third.image}
+          alt={third.alt}
+          widths={[420, 620, 860]}
+          sizes="(max-width: 72rem) 90vw, 24vw"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .editorial-grid {
+    align-items: center;
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1fr 1.2fr;
+  }
+
+  .editorial-copy {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .editorial-copy h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+  }
+
+  .editorial-copy p {
+    color: var(--color-muted);
+  }
+
+  .editorial-copy a {
+    color: var(--color-heading);
+    font-weight: 600;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2rem;
+    width: fit-content;
+  }
+
+  .editorial-mosaic {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-areas:
+      "a b"
+      "a c";
+    grid-template-columns: 1.05fr 1fr;
+  }
+
+  figure {
+    margin: 0;
+    min-height: 12rem;
+  }
+
+  .panel-a {
+    grid-area: a;
+  }
+
+  .panel-b {
+    grid-area: b;
+  }
+
+  .panel-c {
+    grid-area: c;
+  }
+
+  .panel-a :global(img),
+  .panel-b :global(img),
+  .panel-c :global(img) {
+    border-radius: 0.6rem;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  @media (max-width: 72rem) {
+    .editorial-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .editorial-mosaic {
+      grid-template-areas:
+        "a"
+        "b"
+        "c";
+      grid-template-columns: 1fr;
+    }
+
+    figure {
+      min-height: 16rem;
+    }
+  }
+</style>

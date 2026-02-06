@@ -1,52 +1,99 @@
 ---
 import GalleryGrid from "../components/GalleryGrid.astro";
+import AvailabilityPanel from "../components/home/AvailabilityPanel.astro";
+import ClientNotes from "../components/home/ClientNotes.astro";
+import DesignProcess from "../components/home/DesignProcess.astro";
+import EditorialShowcase from "../components/home/EditorialShowcase.astro";
+import HomeHero from "../components/home/HomeHero.astro";
+import ServicePillars from "../components/home/ServicePillars.astro";
+import StudioStats from "../components/home/StudioStats.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { galleryEntries } from "../lib/gallery";
+import {
+  clientNotes,
+  processSteps,
+  servicePillars,
+  studioStats
+} from "../lib/home";
 
-const featuredItems = galleryEntries.slice(0, 3);
+if (galleryEntries.length < 6) {
+  throw new Error("Homepage expects at least six gallery images");
+}
+
+const heroPrimaryImage = galleryEntries[2];
+const heroSecondaryImage = galleryEntries[4];
+const editorialItems = [galleryEntries[0], galleryEntries[3], galleryEntries[5]];
+const portfolioItems = galleryEntries;
 ---
 
 <BaseLayout
   title="Seasonal Floral Design"
-  description="Seasonal floral design with a focus on texture, movement, and natural color palettes."
+  description="GLDN Floral creates refined floral design for weddings, events, and everyday spaces with seasonal stems and sculptural composition."
   path={Astro.url.pathname}
 >
-  <section class="section">
+  <HomeHero
+    primaryImage={heroPrimaryImage}
+    secondaryImage={heroSecondaryImage}
+  />
+
+  <ServicePillars items={servicePillars} />
+  <StudioStats items={studioStats} />
+  <DesignProcess steps={processSteps} />
+  <EditorialShowcase items={editorialItems} />
+
+  <section class="section portfolio-section">
     <div class="container">
-      <p class="eyebrow">GLDN Floral</p>
-      <h1 class="page-title">Seasonal Floral Design for Thoughtful Celebrations</h1>
-      <p class="page-intro">
-        A boutique floral studio creating organic arrangements with painterly color, soft structure,
-        and a refined editorial feel.
+      <header class="portfolio-header">
+        <p class="eyebrow">Portfolio Preview</p>
+        <h2>Recent Arrangements</h2>
+        <p>
+          A rotating set of studio work. This can later expand into category filters and venue-based
+          story pages.
+        </p>
+      </header>
+      <GalleryGrid items={portfolioItems} />
+      <p class="portfolio-link-wrap">
+        <a class="portfolio-link" href="/gallery">View Paginated Gallery</a>
       </p>
     </div>
   </section>
 
-  <section class="section featured-gallery">
-    <div class="container">
-      <div class="section-header">
-        <h2>Featured Gallery</h2>
-      </div>
-      <GalleryGrid items={featuredItems} />
-    </div>
-  </section>
+  <ClientNotes notes={clientNotes} />
+  <AvailabilityPanel />
 </BaseLayout>
 
 <style>
-  .section-header {
-    align-items: baseline;
-    display: flex;
-    flex-wrap: wrap;
+  .portfolio-section {
+    padding-top: var(--space-5);
+  }
+
+  .portfolio-header {
+    display: grid;
     gap: var(--space-3);
-    justify-content: space-between;
     margin-bottom: var(--space-5);
+    max-width: 62ch;
   }
 
-  h2 {
-    font-size: clamp(1.9rem, 4vw, 3.2rem);
+  .portfolio-header h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
   }
 
-  .featured-gallery {
-    padding-top: var(--space-4);
+  .portfolio-header p {
+    color: var(--color-muted);
+  }
+
+  .portfolio-link-wrap {
+    margin-top: var(--space-5);
+  }
+
+  .portfolio-link {
+    border-bottom: 1px solid var(--color-heading);
+    color: var(--color-heading);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .portfolio-link:hover {
+    color: #4f3f1b;
   }
 </style>

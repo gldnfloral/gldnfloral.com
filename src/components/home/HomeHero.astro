@@ -1,0 +1,198 @@
+---
+import { Image } from "astro:assets";
+
+import type { GalleryEntry } from "../../lib/gallery";
+
+interface Props {
+  primaryImage: GalleryEntry;
+  secondaryImage: GalleryEntry;
+}
+
+const { primaryImage, secondaryImage } = Astro.props;
+---
+
+<section class="section hero-section">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Monterey Bay Floral Studio</p>
+      <h1 class="page-title">Floral Design with a Soft Editorial Point of View</h1>
+      <p class="page-intro">
+        GLDN Floral creates artful arrangements for weddings, events, and intimate gatherings using
+        seasonal stems, thoughtful color, and intentional form.
+      </p>
+
+      <div class="hero-actions" aria-label="Primary actions">
+        <a class="hero-link hero-link-primary" href="/gallery">Browse Gallery</a>
+        <a class="hero-link" href="/contact">Start an Inquiry</a>
+      </div>
+
+      <dl class="hero-meta" aria-label="Studio highlights">
+        <div>
+          <dt>Now Booking</dt>
+          <dd>Spring + Summer 2026</dd>
+        </div>
+        <div>
+          <dt>Studio Focus</dt>
+          <dd>Weddings, Editorial, Hospitality</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hero-media" aria-label="Featured floral work">
+      <figure class="hero-primary">
+        <Image
+          src={primaryImage.image}
+          alt={primaryImage.alt}
+          widths={[540, 760, 980]}
+          sizes="(max-width: 64rem) 100vw, 35vw"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      <figure class="hero-secondary">
+        <Image
+          src={secondaryImage.image}
+          alt={secondaryImage.alt}
+          widths={[420, 640, 860]}
+          sizes="(max-width: 64rem) 70vw, 24vw"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    padding-bottom: var(--space-6);
+    padding-top: var(--space-8);
+  }
+
+  .hero-grid {
+    align-items: center;
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .hero-link {
+    align-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-heading);
+    display: inline-flex;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+  }
+
+  .hero-link:hover {
+    border-color: var(--color-heading);
+  }
+
+  .hero-link-primary {
+    background: var(--color-sandy-brown);
+    border-color: var(--color-sandy-brown);
+    color: var(--color-off-white);
+  }
+
+  .hero-link-primary:hover {
+    background: #db863d;
+    border-color: #db863d;
+  }
+
+  .hero-meta {
+    border-top: 1px solid var(--color-border);
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0;
+    padding-top: var(--space-4);
+  }
+
+  .hero-meta dt {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .hero-meta dd {
+    margin: var(--space-1) 0 0;
+  }
+
+  .hero-media {
+    min-height: 25rem;
+    position: relative;
+  }
+
+  .hero-primary,
+  .hero-secondary {
+    margin: 0;
+  }
+
+  .hero-primary :global(img),
+  .hero-secondary :global(img) {
+    border-radius: 0.5rem;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .hero-primary {
+    margin-left: auto;
+    max-width: 29rem;
+    width: 82%;
+  }
+
+  .hero-secondary {
+    border: 0.45rem solid var(--color-off-white);
+    bottom: -1.5rem;
+    left: 0;
+    max-width: 17rem;
+    position: absolute;
+    width: 50%;
+  }
+
+  @media (max-width: 64rem) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-media {
+      min-height: auto;
+      padding-bottom: var(--space-8);
+    }
+
+    .hero-primary {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .hero-secondary {
+      bottom: 0;
+      left: auto;
+      right: 1rem;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .hero-meta {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

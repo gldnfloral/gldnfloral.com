@@ -1,0 +1,91 @@
+<section class="section availability-section">
+  <div class="container availability-wrap">
+    <div class="availability-copy">
+      <p class="eyebrow">Availability</p>
+      <h2>Ready to Plan Your Floral Direction?</h2>
+      <p>
+        This area can later support package pricing, frequently requested upgrades, and seasonal studio
+        announcements.
+      </p>
+    </div>
+    <div class="availability-actions">
+      <a class="action-primary" href="/contact">Email the Studio</a>
+      <a class="action-secondary" href="/about">About GLDN Floral</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .availability-section {
+    padding-block: var(--space-6);
+  }
+
+  .availability-wrap {
+    align-items: center;
+    background: linear-gradient(120deg, var(--color-cornsilk), var(--color-soft-blush));
+    border: 1px solid var(--color-border);
+    border-radius: 0.8rem;
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: 1.2fr auto;
+    padding: var(--space-6);
+  }
+
+  .availability-copy {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .availability-copy h2 {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+  }
+
+  .availability-copy p {
+    color: var(--color-muted);
+    max-width: 58ch;
+  }
+
+  .availability-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: flex-end;
+  }
+
+  .availability-actions a {
+    border-radius: 999px;
+    font-weight: 600;
+    padding: 0.65rem 1rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .action-primary {
+    background: var(--color-heading);
+    border: 1px solid var(--color-heading);
+    color: var(--color-off-white);
+  }
+
+  .action-primary:hover {
+    background: #55431f;
+  }
+
+  .action-secondary {
+    border: 1px solid var(--color-heading);
+    color: var(--color-heading);
+  }
+
+  .action-secondary:hover {
+    background: rgba(101, 81, 35, 0.08);
+  }
+
+  @media (max-width: 62rem) {
+    .availability-wrap {
+      grid-template-columns: 1fr;
+    }
+
+    .availability-actions {
+      justify-content: flex-start;
+    }
+  }
+</style>

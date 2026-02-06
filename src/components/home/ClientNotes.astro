@@ -1,0 +1,78 @@
+---
+import type { ClientNote } from "../../lib/home";
+
+interface Props {
+  notes: readonly ClientNote[];
+}
+
+const { notes } = Astro.props;
+---
+
+<section class="section notes-section">
+  <div class="container">
+    <header class="notes-header">
+      <p class="eyebrow">Client Notes</p>
+      <h2>Kind Words and Future Testimonial Placeholders</h2>
+    </header>
+
+    <div class="notes-grid">
+      {
+        notes.map((note) => (
+          <blockquote>
+            <p class="quote">“{note.quote}”</p>
+            <footer>{note.client}</footer>
+          </blockquote>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .notes-section {
+    padding-top: var(--space-4);
+  }
+
+  .notes-header {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .notes-header h2 {
+    font-size: clamp(2rem, 4vw, 3.1rem);
+  }
+
+  .notes-grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  blockquote {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    margin: 0;
+    padding: var(--space-5);
+  }
+
+  .quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  footer {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    margin-top: var(--space-3);
+  }
+
+  @media (max-width: 48rem) {
+    .notes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
