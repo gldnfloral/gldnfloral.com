@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # pin@v6
 
       - name: build with astro
-        uses: withastro/action@fc88a7002f0c62327f26fb1b15f2a1d581249278 # pin@v5.1.0
+        uses: withastro/action@44706356b4eb735f8b9035699eb4796241a040c4 # pin@v6.1.0
 
   deploy:
     if: ${{ needs.deployment-check.outputs.continue == 'true' }}
